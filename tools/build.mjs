@@ -99,16 +99,25 @@ const PHOTOS = {
   'PRD-04': { file: 'PRD-04-A', w: 1254, half: 627 },
 };
 const PHOTO_DIR = PAGES_BASE + 'assets/photos/';
+// Batch 2 (2026-10-15): awaiting owner approval. Rendered ONLY in the image-review build, never the storefront.
+const PENDING = {
+  'DEMO-02': { file: 'DEMO-02', w: 1600, half: 800 },
+  'DEMO-03': { file: 'DEMO-03', w: 1600, half: 800 },
+  'GIFT-01-F': { file: 'GIFT-01-F', w: 1600, half: 800 },
+  'GIFT-01-B': { file: 'GIFT-01-B', w: 1600, half: 800 },
+  'GIFT-02': { file: 'GIFT-02', w: 1600, half: 800 },
+};
 // Image review record (image-review/): REVIEW=true renders the same images labelled CONCEPT.
 let REVIEW = false;
-const REVIEW_V = 'r5'; // cache key for image-review/ styles only
+const REVIEW_V = 'r6'; // cache key for image-review/ styles only
 const REVIEW_IMG = PAGES_BASE + 'image-review/img/';
 const _slot = slot;
 const slotOrConcept = (id, ratio, label, extra = '') => {
-  const c = PHOTOS[id];
+  const pending = !PHOTOS[id] && REVIEW && PENDING[id];
+  const c = PHOTOS[id] || (REVIEW && PENDING[id]);
   if (!c) return _slot(id, ratio, label, extra);
   const dir = REVIEW ? REVIEW_IMG : PHOTO_DIR;
-  return `<div class="slot ${REVIEW ? 'slot-concept' : 'slot-photo'}" style="aspect-ratio:${ratio}"${extra} data-focus="${id}"><img src="${dir}${c.file}-${c.w}.jpg" srcset="${dir}${c.file}-${c.half}.jpg ${c.half}w, ${dir}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1024px) 50vw, 100vw" alt="${esc(label)}${REVIEW ? ` — concept image (${c.file}), not final` : ''}" loading="lazy" decoding="async">${REVIEW ? `<span class="slot-id">${c.file} · CONCEPT</span>` : ''}</div>`;
+  return `<div class="slot ${REVIEW ? 'slot-concept' : 'slot-photo'}" style="aspect-ratio:${ratio}"${extra} data-focus="${id}"><img src="${dir}${c.file}-${c.w}.jpg" srcset="${dir}${c.file}-${c.half}.jpg ${c.half}w, ${dir}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1024px) 50vw, 100vw" alt="${esc(label)}${REVIEW ? ` — concept image (${c.file}), not final` : ''}" loading="lazy" decoding="async">${REVIEW ? `<span class="slot-id">${c.file} · ${pending ? 'PENDING APPROVAL' : 'APPROVED'}</span>` : ''}</div>`;
 };
 
 // ---- page shell ----
@@ -955,6 +964,7 @@ const FRAMES = {
   'home': ['', home()],
   'collections-fortune': ['collections/fortune/', collectionPage('fortune')],
   'collections-barracks': ['collections/barracks/', collectionPage('barracks')],
+  'gift-sets': ['gift-sets/', giftSets()],
   ...Object.fromEntries(PRODUCTS.map((p) => [`product-${p.slug}`, [`products/${p.slug}/`, productPage(p)]])),
 };
 REVIEW = false;
@@ -976,6 +986,9 @@ const DEVICES = [
   ['Desktop', 1440, 900], ['iOS Safari · portrait', 402, 874], ['iOS Safari · landscape', 874, 402],
   ['Android Chrome · portrait', 412, 915], ['Android Chrome · landscape', 915, 412],
 ];
+const FULL = { 'HERO-D-01': 1866, 'HERO-P-01': 1108, 'HERO-L-01': 1688 };
+const fullOf = (id) => FULL[id] || (id.startsWith('PRD') ? 1254 : /^(DEMO-0[23]|GIFT)/.test(id) ? 1600 : 1448);
+const halfOf = (id) => ({ 'HERO-D-01': 933, 'HERO-P-01': 554, 'HERO-L-01': 844 }[id]) || Math.round(fullOf(id) / 2);
 const RS = [
   { ids: ['HERO-D-01', 'HERO-P-01', 'HERO-L-01'], title: 'Home hero', frame: 'home', focus: 'HERO',
     files: [['HERO-D-01', '1866×843', '2880×1300', '6c083373797d677c'], ['HERO-P-01', '1108×1420', '1170×1500', '282b8f7b83f0b940'], ['HERO-L-01', '1869×842', '1688×760', 'b2eed7d665273903']],
@@ -992,6 +1005,19 @@ const RS = [
   ...PRODUCTS.map((p) => ({ ids: [p.slot + '-A'], title: p.name + ' · main image', frame: `product-${p.slug}`, focus: p.slot,
     files: [[p.slot + '-A', '1254×1254', '2000×2000', { 'PRD-01': '63516dc3b680f2a7', 'PRD-02': 'f73e2c00952497e1', 'PRD-03': 'd1b01e645b8e4221', 'PRD-04': 'e48e30501a3a58cb' }[p.slot]]],
     notes: ['Shown as the product page main image and on every product card. Angles B–E remain placeholders.', 'Generated cat badge on the box: provisional packaging concept, not an approved replacement for the logo.', '1254 px against a 2000 px target: sharp at current display sizes; zoom would need the full export.'] })),
+  { batch: 2, ids: ['DEMO-02', 'DEMO-03'], title: 'The reveal · Let it fizz + Read the message', frame: 'home', focus: 'DEMO-02',
+    files: [['DEMO-02', '1600×1200', '1600×1200', '5494b46594a035f2'], ['DEMO-03', '1600×1200', '1600×1200', '7258385ad6e22c11'], ['DEMO-03-B', '1600×1200', '1600×1200', '0e82e30455b52b67']],
+    notes: ['DEMO-03 slot uses the <strong>Fortune</strong> slip only. DEMO-03-B (Barracks Mission Dispatch) is shown here as a gallery variant and is not placed in any customer scene — the site has no collection-aware reveal yet.',
+      'Text printed in the images is not approved copy: DEMO-02’s box reads “Wonton in the Tub” above “Fortune Cookie Bath Bomb” (a soap name on a bath-bomb box); the DEMO-03 boxes carry “WOMEN &amp; GIRLS” / “MEN &amp; BOYS”, gendered labels the claims register did not adopt.',
+      'The slip is a proposed waterproof-paper concept, not safety-tested; no claim about the insert is added to the site.',
+      'Delivered at 1600×1200 but resampled from smaller renders (per the handoff): no added photographic detail.'] },
+  { batch: 2, ids: ['GIFT-01-F', 'GIFT-01-B', 'GIFT-02'], title: 'Gift Sets / Bundles', frame: 'gift-sets', focus: 'GIFT-01-F',
+    files: [['GIFT-01-F', '1600×1200', '1600×1200', '1750b2e7c6788b16'], ['GIFT-01-B', '1600×1200', '1600×1200', '375dfcf89eb27df5'], ['GIFT-02', '1600×1200', '1600×1200', 'c4bb05eef5fbd9be']],
+    notes: ['<strong>Filenames were swapped in the ZIP</strong>: <code>GIFT-02-Gift-Presentation.jpg</code> shows the Fortune 6 + 6 box and <code>GIFT-01-F-Fortune-6-Bombs-6-Soaps.jpg</code> shows the presentation box. They are placed here by content (sha256 shown is the file actually used in each slot).',
+      'The Fortune box prints <strong>“TSO Bath &amp; Body®”</strong>. ® claims a registered trademark; the only mark on record is General Tso’s Meow™. Needs owner confirmation or a corrected render.',
+      'Unapproved copy printed on packaging: “Men &amp; Boys Collection”, “Clean guys cause big splashes”, “Rugged · Fiercely clean · Field-tested”, “Rituals for a brighter day”, “A little ritual brightens every day”, “Today’s Fortune: Clean Rituals Brighter Days”, “Good Things Are Waiting Inside”.',
+      'Generated cat badges and generated “TSO Bath &amp; Body” lettering on the boxes are provisional packaging concepts, not replacements for the approved logo artwork.',
+      'Both sets show six bath bombs and six soaps; sizes, weights and box construction are not final. The page keeps “Coming soon” with no price.'] },
 ];
 const reviewPage = `<!doctype html>
 <html lang="en">
@@ -1009,27 +1035,28 @@ const reviewPage = `<!doctype html>
 <header class="rv-head"><div class="wrap">
   <p class="eyebrow">Owner review · not the storefront</p>
   <h1>Website image concepts</h1>
-  <p class="lead">Ten concept images from 2026-10-15, each shown inside its real slot on the storefront templates at desktop, iOS and Android sizes. Nothing here is installed on the live site; approve or reject per slot.</p>
+  <p class="lead">Concept images shown inside their real slots on the storefront templates at desktop, iOS and Android sizes. <strong>Batch 1</strong> (ten slots) was approved and installed on 2026-10-15. <strong>Batch 2</strong> (reveal steps and gift sets) is pending: nothing from it is on the live storefront.</p>
   <ul class="rv-rules">
     <li><strong>Identity:</strong> the approved General Tso PNG remains the authority. Heroes use the approved emblem in place of the generated cat.</li>
     <li><strong>Packaging:</strong> the cat badges printed on generated boxes are provisional concept imagery, not an approved replacement for the logo.</li>
-    <li><strong>Not included:</strong> GIFT-01-F / GIFT-01-B (outstanding), DEMO-02, DEMO-03, product angles B–E, SRC/SOAP/STORY slots — they stay placeholders.</li>
-    <li>Gold <span class="rv-chip">CONCEPT</span> labels mark every concept image inside the frames.</li>
+    <li><strong>Not included:</strong> product angles B–E, SRC/SOAP/STORY slots — they stay placeholders.</li>
+    <li>Gold labels mark every concept image inside the frames: <span class="rv-chip">APPROVED</span> (batch 1) or <span class="rv-chip">PENDING APPROVAL</span> (batch 2).</li>
   </ul>
-  <nav class="rv-toc" aria-label="Slots">${RS.map((r, i) => `<a href="#s${i}">${r.ids.join(' · ')}</a>`).join('')}<a href="#devices">Device captures</a></nav>
+  <nav class="rv-toc" aria-label="Slots">${RS.map((r, i) => `<a href="#s${i}">${r.batch === 2 ? '★ ' : ''}${r.ids.join(' · ')}</a>`).join('')}<a href="#devices">Device captures</a></nav>
 </div></header>
 <main class="wrap">
 ${RS.map((r, i) => `<section class="rv-slot" id="s${i}">
+  <p class="eyebrow">${r.batch === 2 ? 'Batch 2 · pending owner approval' : 'Batch 1 · approved 2026-10-15 · installed'}</p>
   <h2>${r.title}</h2>
   <div class="rv-table" tabindex="0" role="region" aria-label="Slot details"><table class="rv-meta"><thead><tr><th>Slot</th><th>Generated</th><th>Target</th><th>sha256</th><th>As generated</th></tr></thead><tbody>
-  ${r.files.map(([id, g, t, h]) => `<tr><td>${id}</td><td>${g}</td><td>${t}</td><td><code>${h}…</code></td><td><a class="link" href="img/${id}-${{ 'HERO-D-01': 1866, 'HERO-P-01': 1108, 'HERO-L-01': 1688 }[id] || (id.startsWith('PRD') ? 1254 : 1448)}.jpg">open</a></td></tr>`).join('')}
+  ${r.files.map(([id, g, t, h]) => `<tr><td>${id}</td><td>${g}</td><td>${t}</td><td><code>${h}…</code></td><td><a class="link" href="img/${id}-${fullOf(id)}.jpg">open</a></td></tr>`).join('')}
   </tbody></table></div>
-  <div class="rv-raw">${r.files.map(([id]) => `<a href="img/${id}-${{ 'HERO-D-01': 1866, 'HERO-P-01': 1108, 'HERO-L-01': 1688 }[id] || (id.startsWith('PRD') ? 1254 : 1448)}.jpg"><img src="img/${id}-${{ 'HERO-D-01': 933, 'HERO-P-01': 554, 'HERO-L-01': 844 }[id] || (id.startsWith('PRD') ? 627 : 724)}.jpg" alt="${id} as generated" loading="lazy"><span>${id} as generated</span></a>`).join('')}</div>
+  <div class="rv-raw">${r.files.map(([id]) => `<a href="img/${id}-${fullOf(id)}.jpg"><img src="img/${id}-${halfOf(id)}.jpg" alt="${id} as generated" loading="lazy"><span>${id} as generated</span></a>`).join('')}</div>
   <ul class="rv-notes">${r.notes.map((n) => `<li>${n}</li>`).join('')}</ul>
   <div class="rv-devices">
   ${DEVICES.map(([label, w, h]) => `<figure class="rv-device" style="--w:${w};--h:${h}"><figcaption>${label} <span>${w}×${h}</span></figcaption><div class="rv-screen"><iframe src="frames/${r.frame}.html?focus=${r.focus}" width="${w}" height="${h}" loading="lazy" title="${esc(r.title)} — ${label}"></iframe></div></figure>`).join('\n  ')}
   </div>
-  <p class="rv-decision">Decision for ${r.ids.join(', ')}: <strong>approve</strong> · <strong>approve with changes</strong> · <strong>reject</strong></p>
+  <p class="rv-decision">${r.batch === 2 ? `Decision for ${r.ids.join(', ')}: <strong>approve</strong> · <strong>approve with changes</strong> · <strong>reject</strong>` : `Owner approved ${r.ids.join(', ')} on 2026-10-15; live on the storefront.`}</p>
 </section>`).join('\n')}
 <section class="rv-slot" id="devices">
   <h2>Device captures</h2>
