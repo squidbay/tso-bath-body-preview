@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '7';
+const ASSET_V = '8';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -641,7 +641,7 @@ function ourStory() {
 
 const FAQ = [
   ['How does the fortune / Mission Dispatch reveal work?', 'Fortune Collection bath bombs carry a fortune; Barracks Collection bath bombs carry a Mission Dispatch. Delivery method (card or digital reveal) is a pending decision.'],
-  ['Are your soaps vegan?', 'No. Both of our soaps — Nine Lives Musk™ and Wonton’ in the Tub™ — are made with beef tallow (animal-derived). They share the same base and differ only in color and scent. Tallow soaps are always clearly marked.'],
+  ['Are your soaps vegan?', 'No. The fat base of both our soaps — Nine Lives Musk™ and Wonton’ in the Tub™ — is 100% beef tallow (animal-derived), with no other oils. They share that base and differ only in color and scent. Tallow soaps are always clearly marked.'],
   ['Where are products made?', 'Handmade in Fort Wayne, Indiana.'],
   ['Where do you ship?', 'Tso Bath &amp; Body currently ships within the United States only, via UPS.'],
 ];
