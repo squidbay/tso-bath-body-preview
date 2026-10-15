@@ -16,3 +16,17 @@ Scripts: `sweep.mjs`, `flows.mjs` (playwright-core + system Chrome).
 ## Final re-verification at `92c2064`
 
 62/62 deployed files identical; browser sweep 230/230 clean (+10 cells for the deliberate 404 path, whose only entry is its own 404 status); flows 60/60. See `final-92c2064/`.
+
+## Owner-approved photos installed — re-verification at `e94a49f` (2026-10-15)
+
+The ten images approved on `image-review/` are live (commit `cb2188e`; chat chip change `e94a49f`).
+
+| Check | Result |
+|---|---|
+| Deployed files vs repository | 140 / 140 identical (at `10b45cc`) |
+| Browser sweep, 23 pages × 10 viewports | 230 / 230 clean (`photos-e94a49f/browser-sweep/`) |
+| Every installed photo actually loads (13 pages, scrolled; desktop + phone) | 45 / 45 and 45 / 45 (`photos.mjs`) |
+| Hero: approved emblem fully inside the photo, no generated cat visible, 7 sizes at 2× | 7 / 7 (`photos-e94a49f/hero-zoom/`) |
+| Interaction flows incl. new "Is it 100% tallow?" chip | 61 / 61 live (`photos-e94a49f/flows/`) |
+| Android Chrome 113 / Android 14 — 23 pages + 9 flows | portrait 32 / 32, landscape 32 / 32 |
+| iOS Safari, iPhone 17 / iOS 26.5 — home, collections, 2 PDPs, shop, bag | portrait + landscape captured, correct (`photos-e94a49f/ios-safari/`) |

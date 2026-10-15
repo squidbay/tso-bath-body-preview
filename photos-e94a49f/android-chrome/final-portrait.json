@@ -1,0 +1,156 @@
+[
+  {
+    "name": "final-portrait / (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /shop/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /bath-bombs/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /soaps/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /collections/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /collections/fortune/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /collections/barracks/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /gift-sets/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /products/fortune-cookie-bath-bomb/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /products/wonton-in-the-tub/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /products/the-exploding-dumpling/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /products/nine-lives-musk/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /our-story/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /help/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /bag/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /checkout/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /order-confirmed/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /search/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /search/?q=lavender (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /privacy/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /terms/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /accessibility/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait /collections/nothing-here/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "final-portrait pdp stepper capped at 3",
+    "ok": true
+  },
+  {
+    "name": "final-portrait toast fully on screen",
+    "ok": true,
+    "detail": "{\"x\":85.55357360839844,\"y\":673.5238037109375,\"width\":241.0833282470703,\"height\":49.5238037109375}"
+  },
+  {
+    "name": "final-portrait bag chip = 3",
+    "ok": true
+  },
+  {
+    "name": "final-portrait chat full sheet",
+    "ok": true,
+    "detail": "{\"x\":0,\"y\":0,\"width\":412.19049072265625,\"height\":811.047607421875}"
+  },
+  {
+    "name": "final-portrait chat does not pop keyboard (input not focused)",
+    "ok": true
+  },
+  {
+    "name": "final-portrait chat answers with Fortune suggestions",
+    "ok": true
+  },
+  {
+    "name": "final-portrait drawer opens",
+    "ok": true
+  },
+  {
+    "name": "final-portrait drawer closes",
+    "ok": true
+  },
+  {
+    "name": "final-portrait no page errors",
+    "ok": true,
+    "detail": ""
+  }
+]

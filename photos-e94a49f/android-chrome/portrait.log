@@ -1,0 +1,33 @@
+PASS final-portrait / (412×811)
+PASS final-portrait /shop/ (412×811)
+PASS final-portrait /bath-bombs/ (412×811)
+PASS final-portrait /soaps/ (412×811)
+PASS final-portrait /collections/ (412×811)
+PASS final-portrait /collections/fortune/ (412×811)
+PASS final-portrait /collections/barracks/ (412×811)
+PASS final-portrait /gift-sets/ (412×811)
+PASS final-portrait /products/fortune-cookie-bath-bomb/ (412×811)
+PASS final-portrait /products/wonton-in-the-tub/ (412×811)
+PASS final-portrait /products/the-exploding-dumpling/ (412×811)
+PASS final-portrait /products/nine-lives-musk/ (412×811)
+PASS final-portrait /our-story/ (412×811)
+PASS final-portrait /help/ (412×811)
+PASS final-portrait /bag/ (412×811)
+PASS final-portrait /checkout/ (412×811)
+PASS final-portrait /order-confirmed/ (412×811)
+PASS final-portrait /search/ (412×811)
+PASS final-portrait /search/?q=lavender (412×811)
+PASS final-portrait /privacy/ (412×811)
+PASS final-portrait /terms/ (412×811)
+PASS final-portrait /accessibility/ (412×811)
+PASS final-portrait /collections/nothing-here/ (412×811)
+PASS final-portrait pdp stepper capped at 3
+PASS final-portrait toast fully on screen — {"x":85.55357360839844,"y":673.5238037109375,"width":241.0833282470703,"height":49.5238037109375}
+PASS final-portrait bag chip = 3
+PASS final-portrait chat full sheet — {"x":0,"y":0,"width":412.19049072265625,"height":811.047607421875}
+PASS final-portrait chat does not pop keyboard (input not focused)
+PASS final-portrait chat answers with Fortune suggestions
+PASS final-portrait drawer opens
+PASS final-portrait drawer closes
+PASS final-portrait no page errors
+final-portrait: 32/32 PASS

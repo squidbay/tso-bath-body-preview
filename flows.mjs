@@ -54,8 +54,12 @@ const shot = (p, name) => p.screenshot({ path: `${outDir}/${name}.jpg`, type: 'j
   await p.fill('#chat-input', 'Where do you ship?'); await p.press('#chat-input', 'Enter');
   await p.waitForFunction(() => /United States only/.test(document.querySelector('[data-chat-log]').textContent), null, { timeout: 4000 });
   check('chat: shipping answer', true);
+  await p.click('[data-ask="Is it 100% tallow?"]').catch(() => {});
+  await p.fill('#chat-input', 'Is it 100% tallow?'); await p.press('#chat-input', 'Enter');
+  await p.waitForFunction(() => /share the same tallow base/.test(document.querySelector('[data-chat-log]').textContent), null, { timeout: 4000 });
+  check('chat: tallow answer (positive, with both soaps)', true);
   await p.fill('#chat-input', 'Is it vegan?'); await p.press('#chat-input', 'Enter');
-  await p.waitForFunction(() => /non-tallow bar/.test(document.querySelector('[data-chat-log]').textContent), null, { timeout: 4000 });
+  await p.waitForFunction(() => /made with beef tallow/.test(document.querySelector('[data-chat-log]').textContent), null, { timeout: 4000 });
   check('chat: ingredient answer', true);
   await p.fill('#chat-input', 'Where is my order?'); await p.press('#chat-input', 'Enter');
   await p.waitForFunction(() => /Handing you to the team/.test(document.querySelector('[data-chat-log]').textContent), null, { timeout: 4000 });
