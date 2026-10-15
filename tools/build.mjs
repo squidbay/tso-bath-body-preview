@@ -968,7 +968,7 @@ const FRAMES = {
 CONCEPT = null;
 const FRAME_HEAD = (orig) => `<base href="${PAGES_BASE}${orig}">
 <link rel="stylesheet" href="${PAGES_BASE}image-review/frame.css?v=${ASSET_V}">
-<script>addEventListener('load',()=>{const f=new URLSearchParams(location.search).get('focus');const el=f&&document.querySelector('[data-focus="'+f+'"]');if(el)el.scrollIntoView({block:'center'});});</script>
+<script>addEventListener('load',()=>{const f=new URLSearchParams(location.search).get('focus');const el=f&&f!=='HERO'&&document.querySelector('[data-focus="'+f+'"]');if(el)el.scrollIntoView({block:'center'});});</script>
 `;
 for (const [name, [orig, html]] of Object.entries(FRAMES)) {
   const out = join(OUT, 'image-review', 'frames', `${name}.html`);
