@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '4';
+const ASSET_V = '5';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -28,7 +28,7 @@ const PRODUCTS = [
   { slug: 'fortune-cookie-bath-bomb', name: 'Fortune Cookie Bath Bomb™', collection: 'fortune', type: 'Bath Bomb', category: 'bath-bombs', slot: 'PRD-01', stock: 'in',
     lead: 'A novelty fortune-cookie-inspired bath bomb with a surprise fortune experience.' },
   { slug: 'wonton-in-the-tub', name: 'Wonton’ in the Tub™', collection: 'fortune', type: 'Tallow Soap', category: 'soaps', slot: 'PRD-02', stock: 'low', left: 3,
-    tallow: 'Contains tallow (animal-derived)',
+    tallow: 'Contains beef tallow (animal-derived)',
     lead: 'A Fortune Collection tallow soap, clearly marked.' },
   { slug: 'the-exploding-dumpling', name: 'The Exploding Dumpling™', collection: 'barracks', type: 'Bath Bomb', category: 'bath-bombs', slot: 'PRD-03', stock: 'out',
     lead: 'A Barracks Collection bath bomb. Every soak ends with a Mission Dispatch.' },
@@ -629,7 +629,7 @@ function ourStory() {
 
 const FAQ = [
   ['How does the fortune / Mission Dispatch reveal work?', 'Fortune Collection bath bombs carry a fortune; Barracks Collection bath bombs carry a Mission Dispatch. Delivery method (card or digital reveal) is a pending decision.'],
-  ['Are your soaps vegan?', 'No. Both of our soaps contain tallow (animal-derived): Nine Lives Musk™ contains beef tallow, and Wonton’ in the Tub™ contains tallow. Tallow soaps are always clearly marked.'],
+  ['Are your soaps vegan?', 'No. Both of our soaps — Nine Lives Musk™ and Wonton’ in the Tub™ — are made with beef tallow (animal-derived). They share the same base and differ only in color and scent. Tallow soaps are always clearly marked.'],
   ['Where are products made?', 'Handmade in Fort Wayne, Indiana.'],
   ['Where do you ship?', 'Tso Bath &amp; Body currently ships within the United States only, via UPS.'],
 ];
