@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '2';
+const ASSET_V = '3';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -390,7 +390,7 @@ function home() {
       ${rule}
     </div>
     ${productGrid(root, PRODUCTS)}
-    <p class="center"><a class="link" href="shop/">Shop all ${icon('arrow-right', 'icon icon-sm')}</a></p>
+    <p class="center section-foot"><a class="link" href="shop/">Shop all ${icon('arrow-right', 'icon icon-sm')}</a></p>
   </div>
 </section>
 <section class="section section-alt" aria-labelledby="col-h">

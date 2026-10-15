@@ -71,6 +71,9 @@ em{font-style:italic;font-weight:500}
 .note{font-size:15px;opacity:1;display:flex;gap:8px;align-items:flex-start}
 .muted{opacity:var(--tso-o-placeholder)}
 .center{text-align:center}
+/* P3 08: one stack step (32px) after a grid, nothing extra before the section padding */
+.section-foot{margin:var(--tso-space-6) 0 0}
+.section-foot .link{min-height:44px}
 .center .lead{margin-inline:auto}
 .sr-only{position:absolute!important;width:1px;height:1px;margin:-1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap;border:0}
 .skip{position:absolute;left:12px;top:-60px;z-index:100;background:var(--tso-primary);color:var(--tso-on-primary);padding:10px 16px;border-radius:var(--tso-radius-md);font-weight:700;text-decoration:none}
