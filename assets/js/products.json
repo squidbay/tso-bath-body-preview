@@ -6,16 +6,16 @@
     "type": "Bath Bomb",
     "slot": "PRD-01",
     "max": 10,
-    "tallow": false
+    "tallow": ""
   },
   "wonton-in-the-tub": {
     "name": "Wonton’ in the Tub™",
     "collection": "Fortune Collection",
     "key": "fortune",
-    "type": "Soap",
+    "type": "Tallow Soap",
     "slot": "PRD-02",
     "max": 3,
-    "tallow": false
+    "tallow": "Contains tallow (animal-derived)"
   },
   "the-exploding-dumpling": {
     "name": "The Exploding Dumpling™",
@@ -24,7 +24,7 @@
     "type": "Bath Bomb",
     "slot": "PRD-03",
     "max": 0,
-    "tallow": false
+    "tallow": ""
   },
   "nine-lives-musk": {
     "name": "Nine Lives Musk™",
@@ -33,6 +33,6 @@
     "type": "Tallow Soap",
     "slot": "PRD-04",
     "max": 10,
-    "tallow": true
+    "tallow": "Contains beef tallow (animal-derived)"
   }
 }

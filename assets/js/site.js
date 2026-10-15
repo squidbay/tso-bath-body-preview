@@ -318,7 +318,7 @@
   <div>
     <p class="eyebrow eyebrow-${d.key}">${d.collection.toUpperCase()}</p>
     <h2><a href="${root}products/${slug}/">${d.name}</a></h2>
-    ${d.tallow ? '<p class="card-meta" style="margin:0">Contains beef tallow (animal-derived)</p>' : ''}
+    ${d.tallow ? `<p class="card-meta" style="margin:0">${d.tallow}</p>` : ''}
     <div class="line-actions">
       <div class="stepper" data-max="${d.max}"><button type="button" class="step-btn" data-step="-1" aria-label="Decrease quantity of ${d.name}">${ICON.minus}</button><input class="step-val" type="number" inputmode="numeric" min="1" max="${d.max}" value="${b[slug]}" aria-label="Quantity of ${d.name}"><button type="button" class="step-btn" data-step="1" aria-label="Increase quantity of ${d.name}">${ICON.plus}</button></div>
       <button type="button" class="remove" data-remove="${slug}">${ICON.trash}Remove</button>
@@ -425,11 +425,11 @@
     const card = (slug, eyebrow, name, stock) => `<div class="msg-card"><p class="eyebrow">${eyebrow}</p><p class="msg-title">${name}</p><p>$—.— · ${stock}</p>${stock === 'Out of stock' ? `<a class="btn btn-secondary btn-block" href="${root}products/${slug}/">View product</a>` : `<button class="btn btn-primary btn-block" type="button" data-add="${slug}">Add to Bag</button>`}</div>`;
     const P = 'products/';
     const answers = [
-      { re: /vegan|tallow|animal|ingredient|lard/i, html: `Nine Lives Musk™ contains beef tallow (animal-derived). Wonton’ in the Tub™ is our non-tallow bar. Full records: <a class="link" href="${root}help/#ingredients">Ingredients &amp; Care →</a>` },
+      { re: /vegan|tallow|animal|ingredient|lard/i, html: `Both of our soaps contain tallow (animal-derived): Nine Lives Musk™ contains beef tallow, and Wonton’ in the Tub™ contains tallow. Tallow soaps are always clearly marked. Full records: <a class="link" href="${root}help/#ingredients">Ingredients &amp; Care →</a>` },
       { re: /order|refund|return|track|late|damag|wrong/i, html: `Handing you to the team. Reply within — business days. <a class="link" href="${root}help/#contact">Contact form</a>`, note: 'Order issues always escalate; I can’t look up orders here.' },
       { re: /ship|deliver|canada|international|ups/i, html: `Tso Bath &amp; Body currently ships within the United States only, via UPS. <a class="link" href="${root}help/#shipping">Shipping &amp; Returns →</a>` },
       { re: /\b(him|his|he|brother|army|veteran|military|dad|father|husband|boys?|men|man|barracks|soldier|navy|marines?)\b/i, html: 'Barracks Collection, then. Two options:', cards: [card('the-exploding-dumpling', 'BARRACKS · BATH BOMB', 'The Exploding Dumpling™', 'Out of stock'), card('nine-lives-musk', 'BARRACKS · TALLOW SOAP', 'Nine Lives Musk™', 'In stock')] },
-      { re: /\b(her|she|mom|mother|sister|wife|girls?|women|woman|fortune collection|friend|gift)\b/i, html: 'Fortune Collection — every soak ends with a fortune. Two options:', cards: [card('fortune-cookie-bath-bomb', 'FORTUNE · BATH BOMB', 'Fortune Cookie Bath Bomb™', 'In stock'), card('wonton-in-the-tub', 'FORTUNE · SOAP', 'Wonton’ in the Tub™', 'Low stock · 3 left')] },
+      { re: /\b(her|she|mom|mother|sister|wife|girls?|women|woman|fortune collection|friend|gift)\b/i, html: 'Fortune Collection — every soak ends with a fortune. Two options:', cards: [card('fortune-cookie-bath-bomb', 'FORTUNE · BATH BOMB', 'Fortune Cookie Bath Bomb™', 'In stock'), card('wonton-in-the-tub', 'FORTUNE · TALLOW SOAP', 'Wonton’ in the Tub™', 'Low stock · 3 left')] },
       { re: /fortune|dispatch|reveal|message|surprise/i, html: 'Fortune Collection bath bombs carry a fortune; Barracks Collection bath bombs carry a Mission Dispatch.' },
       { re: /\bmade\b|fort wayne|handmade/i, html: 'Handmade in Fort Wayne, Indiana.' },
     ];

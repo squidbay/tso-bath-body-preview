@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '3';
+const ASSET_V = '4';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -27,11 +27,12 @@ const NET_WT = '— oz net wt';
 const PRODUCTS = [
   { slug: 'fortune-cookie-bath-bomb', name: 'Fortune Cookie Bath Bomb™', collection: 'fortune', type: 'Bath Bomb', category: 'bath-bombs', slot: 'PRD-01', stock: 'in',
     lead: 'A novelty fortune-cookie-inspired bath bomb with a surprise fortune experience.' },
-  { slug: 'wonton-in-the-tub', name: 'Wonton’ in the Tub™', collection: 'fortune', type: 'Soap', category: 'soaps', slot: 'PRD-02', stock: 'low', left: 3,
-    lead: 'A Fortune Collection bar — our non-tallow soap.' },
+  { slug: 'wonton-in-the-tub', name: 'Wonton’ in the Tub™', collection: 'fortune', type: 'Tallow Soap', category: 'soaps', slot: 'PRD-02', stock: 'low', left: 3,
+    tallow: 'Contains tallow (animal-derived)',
+    lead: 'A Fortune Collection tallow soap, clearly marked.' },
   { slug: 'the-exploding-dumpling', name: 'The Exploding Dumpling™', collection: 'barracks', type: 'Bath Bomb', category: 'bath-bombs', slot: 'PRD-03', stock: 'out',
     lead: 'A Barracks Collection bath bomb. Every soak ends with a Mission Dispatch.' },
-  { slug: 'nine-lives-musk', name: 'Nine Lives Musk™', collection: 'barracks', type: 'Tallow Soap', category: 'soaps', slot: 'PRD-04', stock: 'in', tallow: true,
+  { slug: 'nine-lives-musk', name: 'Nine Lives Musk™', collection: 'barracks', type: 'Tallow Soap', category: 'soaps', slot: 'PRD-04', stock: 'in', tallow: 'Contains beef tallow (animal-derived)',
     lead: 'A Barracks Collection tallow soap, clearly marked.' },
 ];
 
@@ -306,7 +307,7 @@ function productCard(root, p, headingLevel = 3) {
     ${eyebrow(`${COLLECTIONS[p.collection].short.toUpperCase()} · ${p.type.toUpperCase()}`, p.collection)}
     <${h} class="card-title"><a href="${productUrl(root, p)}">${p.name}</a></${h}>
     <p class="price">${PRICE} <span class="net">${NET_WT}</span></p>
-    <p class="card-meta">${p.tallow ? `<span class="tallow">${icon('info', 'icon icon-sm')}Contains beef tallow (animal-derived)</span>` : `Scent: — · ${stockLine(p)}`}</p>
+    <p class="card-meta">Scent: — · ${stockLine(p)}${p.tallow ? `<br><span class="tallow">${icon('info', 'icon icon-sm')}${p.tallow}</span>` : ''}</p>
     ${action}
   </div>
 </article>`;
@@ -544,13 +545,13 @@ function productPage(p) {
         ${eyebrow(typeLabel(p), p.collection)}
         <h1 class="pdp-title">${p.name}</h1>
         <p class="price price-lg">${PRICE} <span class="net">· ${NET_WT}</span></p>
-        ${p.tallow ? `<p class="tallow tallow-row">${icon('info', 'icon')}Contains beef tallow (animal-derived).</p>` : ''}
+        ${p.tallow ? `<p class="tallow tallow-row">${icon('info', 'icon')}${p.tallow}.</p>` : ''}
         <p class="lead">${p.lead}</p>
         <p class="pdp-meta">Scent: —</p>
         <p class="pdp-meta">${stockLine(p)}${p.stock === 'out' ? '' : ' — from verified inventory'}</p>
         ${buy}
         <div class="accordion" data-accordion>
-          ${[['Ingredients', `Full ingredient disclosure for every product.${p.tallow ? ' Contains beef tallow (animal-derived).' : ''} The ingredient list is published from approved records.`],
+          ${[['Ingredients', `Full ingredient disclosure for every product.${p.tallow ? ` ${p.tallow}.` : ''} The ingredient list is published from approved records.`],
              ['Directions &amp; warnings', 'Directions and warnings are published from approved records.'],
              ['Shipping &amp; returns', 'Ships via UPS. Tso Bath &amp; Body currently ships within the United States only. <a class="link" href="' + root + 'help/#shipping">Shipping &amp; Returns</a>']]
             .map(([q, a], i) => `<div class="acc-item"><h2 class="acc-h"><button type="button" class="acc-btn" aria-expanded="false" aria-controls="acc-${i}">${q}<span class="acc-icon">${icon('plus', 'icon icon-plus')}${icon('minus', 'icon icon-minus')}</span></button></h2><div class="acc-panel" id="acc-${i}" hidden><p>${a}</p></div></div>`).join('\n          ')}
@@ -628,7 +629,7 @@ function ourStory() {
 
 const FAQ = [
   ['How does the fortune / Mission Dispatch reveal work?', 'Fortune Collection bath bombs carry a fortune; Barracks Collection bath bombs carry a Mission Dispatch. Delivery method (card or digital reveal) is a pending decision.'],
-  ['Are your soaps vegan?', 'Nine Lives Musk™ contains beef tallow (animal-derived). Wonton’ in the Tub™ is our non-tallow bar. Tallow soaps are always clearly marked.'],
+  ['Are your soaps vegan?', 'No. Both of our soaps contain tallow (animal-derived): Nine Lives Musk™ contains beef tallow, and Wonton’ in the Tub™ contains tallow. Tallow soaps are always clearly marked.'],
   ['Where are products made?', 'Handmade in Fort Wayne, Indiana.'],
   ['Where do you ship?', 'Tso Bath &amp; Body currently ships within the United States only, via UPS.'],
 ];
@@ -644,7 +645,7 @@ ${items.map(([q, a], i) => `  <div class="acc-item"><h3 class="acc-h"><button ty
 <p>Full ingredient disclosure for every product; tallow soaps clearly marked.</p>
 <table class="table"><caption class="sr-only">Products and tallow disclosure</caption>
 <thead><tr><th scope="col">Product</th><th scope="col">Collection</th><th scope="col">Tallow</th></tr></thead>
-<tbody>${PRODUCTS.map((p) => `<tr><th scope="row"><a class="link" href="${productUrl(root, p)}">${p.name}</a></th><td>${COLLECTIONS[p.collection].short}</td><td>${p.tallow ? 'Contains beef tallow (animal-derived)' : p.type === 'Soap' ? 'Non-tallow' : '—'}</td></tr>`).join('')}</tbody></table>
+<tbody>${PRODUCTS.map((p) => `<tr><th scope="row"><a class="link" href="${productUrl(root, p)}">${p.name}</a></th><td>${COLLECTIONS[p.collection].short}</td><td>${p.tallow || '—'}</td></tr>`).join('')}</tbody></table>
 <p class="note">Full ingredient lists are published here from approved records.</p>`,
     faq: `<h2>FAQ</h2>${acc(FAQ, 'faq')}`,
     shipping: `<h2>Shipping &amp; Returns</h2>
@@ -899,7 +900,7 @@ for (const p of PRODUCTS) files[`products/${p.slug}/index.html`] = productPage(p
 // Product data for the bag, shared with site.js.
 files['assets/js/products.json'] = JSON.stringify(Object.fromEntries(PRODUCTS.map((p) => [p.slug, {
   name: p.name, collection: COLLECTIONS[p.collection].name, key: p.collection, type: p.type, slot: p.slot,
-  max: p.stock === 'out' ? 0 : p.stock === 'low' ? p.left : 10, tallow: !!p.tallow,
+  max: p.stock === 'out' ? 0 : p.stock === 'low' ? p.left : 10, tallow: p.tallow || '',
 }])), null, 2) + '\n';
 
 for (const [rel, html] of Object.entries(files)) {
