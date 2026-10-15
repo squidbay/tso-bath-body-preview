@@ -539,8 +539,9 @@ body.locked{overflow:hidden}
 .chest-contents b{color:var(--tso-headline);font-variant-numeric:tabular-nums}
 .chest-contents .eyebrow{font-size:11px;margin-bottom:8px}
 .chest-count{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tso-gold-text);margin-bottom:10px}
-.chest-note{font-size:14px;display:flex;gap:6px;align-items:flex-start}
-.chest-note .icon{color:var(--tso-gold);margin-top:3px}
+.chest-quality{font-family:var(--tso-font-display);font-style:italic;font-weight:500;font-size:19px;line-height:1.35;color:var(--tso-gold-text);display:flex;gap:8px;align-items:center;margin-bottom:6px}
+.chest-quality .icon{flex:none;color:var(--tso-gold);width:18px;height:18px}
+.chest-occasion{font-size:14px}
 .chest-body .btn{align-self:flex-start;margin-top:4px}
 @media (max-width:1023px){.chest-body{padding:24px 20px}}
 @media (orientation:portrait) and (max-width:1023px){.chest{grid-template-columns:1fr}}

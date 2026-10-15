@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '12';
+const ASSET_V = '13';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -522,7 +522,8 @@ function doubleHappinessChest() {
       <div class="band-barracks"><p class="eyebrow eyebrow-barracks">${icon('star-barracks', 'icon icon-motif')}Barracks Collection</p><ul role="list"><li><b>6</b> The Exploding Dumpling™ Bath Bombs</li><li><b>6</b> Nine Lives Musk™ soaps</li></ul></div>
     </div>
     <p class="chest-count">24 pieces · 12 bath bombs + 12 soaps</p>
-    <p class="chest-note">${icon('info', 'icon icon-sm')}Soaps contain beef tallow (animal-derived). Perfect for couples, anniversaries, weddings, holidays and special occasions.</p>
+    <p class="chest-quality">${icon('cow', 'icon icon-sm')}Crafted with 100% locally farm-raised beef tallow.</p>
+    <p class="chest-occasion">Perfect for couples, anniversaries, weddings, holidays and special occasions.</p>
     <p class="price">Price pending</p>
     <button class="btn btn-secondary" type="button" disabled>Coming soon</button>
     </div>
