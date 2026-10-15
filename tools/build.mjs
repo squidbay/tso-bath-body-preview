@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '10';
+const ASSET_V = '12';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -497,24 +497,19 @@ function collectionPage(key) {
     chips: [['all', 'All'], ['bath-bombs', 'Bath Bombs'], ['soaps', 'Soaps']] });
 }
 
-// GIFT-03 — The Double Happiness Chest (owner brief 2026-10-15): both 12-piece sets in one outer chest.
-// No dedicated photograph yet: the two approved gift-set images stand in, split left/right, labelled pending.
-// Coming soon — no price, no Add to Bag, no availability date.
+// The Double Happiness Chest (owner brief 2026-10-15): both 12-piece sets in one outer chest.
+// Image: the approved GIFT-02 gift-presentation concept, unaltered and uncropped (owner correction).
+// GIFT-03 stays reserved for real chest photography. Coming soon — no price, no Add to Bag.
 function doubleHappinessChest() {
-  const half = (id, label) => {
-    const c = PHOTOS[id];
-    return `<div class="chest-half"><img src="${PHOTO_DIR}${c.file}-${c.half}.jpg" srcset="${PHOTO_DIR}${c.file}-${c.half}.jpg ${c.half}w, ${PHOTO_DIR}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1280px) 640px, 50vw" alt="${label}" loading="lazy" decoding="async"></div>`;
-  };
+  const c = PHOTOS['GIFT-02'];
   return `<article class="chest" aria-labelledby="chest-h" data-focus="GIFT-03">
-  <div class="chest-media">
-    ${half('GIFT-01-F', 'Fortune Collection 12-piece gift set')}
-    ${half('GIFT-01-B', 'Barracks Collection 12-piece gift set')}
-    <span class="chest-seal" aria-hidden="true">囍</span>
-    <span class="slot-id chest-slot">GIFT-03 · chest photograph pending</span>
-  </div>
+  <figure class="chest-media">
+    <img src="${PHOTO_DIR}${c.file}-${c.w}.jpg" srcset="${PHOTO_DIR}${c.file}-${c.half}.jpg ${c.half}w, ${PHOTO_DIR}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1024px) 620px, (orientation: landscape) 50vw, 100vw" alt="Tso Bath &amp; Body gift presentation with wrapped Fortune and Barracks gifts, tissue paper and message cards" width="${c.w}" height="1200" loading="lazy" decoding="async">
+    <figcaption class="chest-caption">Concept image of our proposed gift presentation. Final 24-piece chest packaging is in development.</figcaption>
+  </figure>
   <div class="chest-body">
     <div class="chest-intro">
-    <p class="eyebrow">Featured · Coming soon</p>
+    <p class="eyebrow chest-eyebrow"><span class="chest-seal" aria-hidden="true">囍</span>Featured · Coming soon</p>
     <h2 id="chest-h" class="chest-title">The Double Happiness Chest</h2>
     <p class="chest-sub"><span lang="zh-Hans">双喜</span> · Signature Couples Gift Set</p>
     <p class="chest-tag">Two collections. One legendary gift.</p>
@@ -562,15 +557,6 @@ function giftSets() {
       ${set('GIFT-01-B', 'barracks', 'Barracks gift set')}
     </div>
     ${doubleHappinessChest()}
-    <div class="giftband">
-      ${slotOrConcept('GIFT-02', '4 / 3', 'Gift presentation and message card', ' style="max-width:360px"')}
-      <div>
-        <p class="eyebrow">Gift presentation</p>
-        <h2 class="h3">Not sure which collection?</h2>
-        <p>General Tso can help you pick a gift.</p>
-        <button class="btn btn-primary" type="button" data-chat-open>Ask General Tso</button>
-      </div>
-    </div>
   </div>
 </section>` });
 }

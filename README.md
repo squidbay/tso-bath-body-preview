@@ -14,7 +14,7 @@ A static owner-review preview of the proposed tsobathbody.com storefront. This i
 | `shop/` | Shop All with filter chips | P1-03/04 |
 | `bath-bombs/`, `soaps/` | Category listings | P1-03 |
 | `collections/`, `collections/fortune/`, `collections/barracks/` | Collections hub and the two collections | P3 12 |
-| `gift-sets/` | Gift Sets / Bundles — Fortune and Barracks 12-piece sets plus the featured **Double Happiness Chest** (GIFT-03, 24 pieces, coming soon, no price) | P3 19 |
+| `gift-sets/` | Gift Sets / Bundles — Fortune and Barracks 12-piece sets plus the featured **Double Happiness Chest** (24 pieces, coming soon, no price; shown with the GIFT-02 presentation image until GIFT-03 photography exists) | P3 19 |
 | `products/<slug>/` × 4 | Product detail — gallery, stepper, inventory, tallow disclosure, accordions, sticky mobile bar | P1-05, P3 13 |
 | `our-story/` (+ `#general-tso`) | Our Story and Meet General Tso | P3 03 |
 | `help/` (`#ingredients` `#faq` `#shipping` `#contact` `#order`) | Help Hub, light treatment | P1-09/11, P3 17 |

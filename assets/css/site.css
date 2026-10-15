@@ -520,15 +520,14 @@ body.locked{overflow:hidden}
 }
 
 /* ---------- GIFT-03 · The Double Happiness Chest ---------- */
-.chest{margin-top:var(--tso-space-7);display:grid;grid-template-columns:1fr;background:var(--tso-bg);border:1px solid var(--tso-gold-rule);border-radius:var(--tso-radius-md);box-shadow:inset 0 0 0 4px var(--tso-bg),inset 0 0 0 5px var(--tso-border);overflow:hidden;position:relative}
+.chest{margin-top:var(--tso-space-7);display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;background:var(--tso-bg);border:1px solid var(--tso-gold-rule);border-radius:var(--tso-radius-md);box-shadow:inset 0 0 0 4px var(--tso-bg),inset 0 0 0 5px var(--tso-border);overflow:hidden;position:relative}
 .chest::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;z-index:2;background:linear-gradient(90deg,var(--tso-fortune-blossom) 0 50%,var(--tso-barracks-olive) 50% 100%)}
-.chest-media{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--tso-bg-2)}
-.chest-half{position:relative;aspect-ratio:4/3;overflow:hidden}
-.chest-half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.chest-half+.chest-half{border-left:2px solid var(--tso-gold)}
-.chest-seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tso-bg);border:2px solid var(--tso-gold);color:var(--tso-gold);font-size:32px;line-height:1;box-shadow:0 0 0 4px var(--tso-bg)}
-.chest-slot{position:absolute;left:10px;bottom:10px;margin:0;z-index:1}
-.chest-body{padding:32px 40px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
+.chest-media{margin:0;background:var(--tso-bg-2);align-self:start}
+.chest-media img{display:block;width:100%;height:auto;aspect-ratio:4/3;object-fit:contain}
+.chest-caption{padding:10px 16px 12px;font-size:13px;line-height:1.45;color:var(--tso-body);opacity:.85;border-top:1px solid var(--tso-border)}
+.chest-eyebrow{display:flex;align-items:center;gap:10px}
+.chest-seal{flex:none;width:30px;height:30px;border-radius:50%;display:inline-flex;align-items:center;justify-content:center;border:1px solid var(--tso-gold);color:var(--tso-gold);font-size:15px;line-height:1;letter-spacing:0}
+.chest-body{padding:32px 40px 40px;display:flex;flex-direction:column}
 .chest-intro,.chest-details{display:flex;flex-direction:column;min-width:0}
 .chest-title{font-size:var(--tso-h2);margin-bottom:6px}
 .chest-sub{color:var(--tso-gold-text);font-weight:600;letter-spacing:.08em;margin-bottom:12px}
@@ -543,9 +542,9 @@ body.locked{overflow:hidden}
 .chest-note{font-size:14px;display:flex;gap:6px;align-items:flex-start}
 .chest-note .icon{color:var(--tso-gold);margin-top:3px}
 .chest-body .btn{align-self:flex-start;margin-top:4px}
-@media (max-width:1023px){.chest-body{grid-template-columns:1fr;padding:24px 20px}}
-@media (orientation:portrait) and (max-width:1023px){.chest-half{aspect-ratio:4/5}}
-@media (max-width:479px){.chest-contents{grid-template-columns:1fr}.chest-seal{width:52px;height:52px;font-size:26px}}
-@media (orientation:landscape) and (max-width:1023px){.chest-media{max-height:calc(100svh - var(--hdr) - 24px)}.chest-half{aspect-ratio:auto;height:min(312px,calc(100svh - var(--hdr) - 24px))}}
+@media (max-width:1023px){.chest-body{padding:24px 20px}}
+@media (orientation:portrait) and (max-width:1023px){.chest{grid-template-columns:1fr}}
+@media (max-width:479px){.chest-contents{grid-template-columns:1fr}}
+@media (orientation:landscape) and (max-width:1023px){.chest{grid-template-columns:minmax(0,5fr) minmax(0,6fr)}.chest-contents{grid-template-columns:1fr}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
