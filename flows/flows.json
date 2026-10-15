@@ -1,0 +1,305 @@
+{
+  "results": [
+    {
+      "name": "add: loading state",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "add: toast \"Added to bag · View bag\"",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "add: button shows Added",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "add: bag chip = 1",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "drawer opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "drawer locks scroll",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "drawer closes on Escape",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "focus returns to menu button",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: full-sheet in portrait",
+      "ok": true,
+      "detail": "{\"x\":0,\"y\":0,\"width\":390,\"height\":844}"
+    },
+    {
+      "name": "chat: typing indicator",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: Barracks suggestions",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: shipping answer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: ingredient answer",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: order escalation",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: fallback + no HTML injection",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: closes on Escape",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pdp: stepper capped at low-stock 3",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pdp: bag chip = 4 after adding 3",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pdp: over-limit add refused with message",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pdp: sticky Add to Bag bar appears after scroll",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "pdp: launcher sits above sticky bar",
+      "ok": true,
+      "detail": "launcher bottom 764 bar top 779"
+    },
+    {
+      "name": "notify: invalid email error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "notify: honest not-stored message",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "bag: low-stock reduction warning",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "bag: out-of-stock item removed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "bag: 2 lines",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "bag: summary count 4",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "bag: stepper updates count",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "bag: empty state",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "bag: chip hidden when empty",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: light theme main",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: mini summary line",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: 7 field errors on empty submit",
+      "ok": true,
+      "detail": "7"
+    },
+    {
+      "name": "checkout: focus on first invalid",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: ZIP 5-digit error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: US-only shipping error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: state uppercased",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: Stripe step modal opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: declined banner, bag saved",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "confirm: order number shown",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "confirm: email echoed",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "confirm: bag cleared",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "checkout: empty-bag state",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "help: deep link #shipping selects tab",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "help: arrow key moves to next tab",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "help: accordion opens",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "contact: 3 errors",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "contact: honest not-sent message",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "search: \"dumpling\" → 1 result",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "search: apostrophe-insensitive",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "search: no-results state",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "filter: Barracks → 2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "filter: Soaps → 2",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "nav: Collections dropdown on hover",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "nav: dropdown toggles by click",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "optin: invalid email error",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "optin: honest not-stored message",
+      "ok": true,
+      "detail": ""
+    },
+    {
+      "name": "chat: desktop panel 400×640 bottom-right",
+      "ok": true,
+      "detail": "{\"x\":1016,\"y\":236,\"width\":400,\"height\":640}"
+    },
+    {
+      "name": "chat: landscape right sheet ≈60% width",
+      "ok": true,
+      "detail": "{\"x\":337.609375,\"y\":0,\"width\":506.390625,\"height\":390}"
+    },
+    {
+      "name": "no console/page errors during flows",
+      "ok": true,
+      "detail": ""
+    }
+  ],
+  "errors": []
+}
