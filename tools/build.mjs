@@ -86,6 +86,17 @@ const emblem = (root, sizes, cls = 'emblem', eager = false) => `<picture>
 // Image slots without final imagery: striped P3 placeholder labelled with the slot ID.
 const slot = (id, ratio, label, extra = '') => `<div class="slot" style="aspect-ratio:${ratio}"${extra} role="img" aria-label="${esc(label)} — image to come (${id})"><span class="slot-id">${id}</span></div>`;
 
+// Image review only (image-review/): when CONCEPT is set, slots that have a concept image render it,
+// labelled CONCEPT. The storefront build never sets CONCEPT, so its output is unchanged.
+let CONCEPT = null;
+const REVIEW_IMG = PAGES_BASE + 'image-review/img/';
+const _slot = slot;
+const slotOrConcept = (id, ratio, label, extra = '') => {
+  const c = CONCEPT && CONCEPT[id];
+  if (!c) return _slot(id, ratio, label, extra);
+  return `<div class="slot slot-concept" style="aspect-ratio:${ratio}"${extra} data-focus="${id}"><img src="${REVIEW_IMG}${c.file}-${c.w}.jpg" srcset="${REVIEW_IMG}${c.file}-${c.half}.jpg ${c.half}w, ${REVIEW_IMG}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1024px) 50vw, 100vw" alt="${esc(label)} — concept image (${c.file}), not final" loading="lazy" decoding="async"><span class="slot-id">${c.file} · CONCEPT</span></div>`;
+};
+
 // ---- page shell ----
 function head({ title, description, root, base }) {
   return `<!doctype html>
@@ -302,7 +313,7 @@ function productCard(root, p, headingLevel = 3) {
     ? `<button class="btn btn-secondary btn-block" type="button" data-notify="${p.slug}">Notify me</button>`
     : `<button class="btn btn-primary btn-block" type="button" data-add="${p.slug}">Add to Bag</button>`;
   return `<article class="card product-card band-${p.collection}${p.stock === 'out' ? ' is-out' : ''}" data-product="${p.slug}" data-collection="${p.collection}" data-category="${p.category}">
-  <a class="card-media" href="${productUrl(root, p)}" tabindex="-1" aria-hidden="true">${slot(p.slot, '1 / 1', p.name)}</a>
+  <a class="card-media" href="${productUrl(root, p)}" tabindex="-1" aria-hidden="true">${slotOrConcept(p.slot, '1 / 1', p.name)}</a>
   <div class="card-body">
     ${eyebrow(`${COLLECTIONS[p.collection].short.toUpperCase()} · ${p.type.toUpperCase()}`, p.collection)}
     <${h} class="card-title"><a href="${productUrl(root, p)}">${p.name}</a></${h}>
@@ -320,7 +331,7 @@ ${list.map((p) => productCard(root, p)).join('\n')}
 function collectionCard(root, key) {
   const c = COLLECTIONS[key];
   return `<article class="card collection-card band-${key}">
-  ${slot(c.slot, '4 / 3', c.name)}
+  ${slotOrConcept(c.slot, '4 / 3', c.name)}
   <div class="card-body">
     ${eyebrow(c.name.toUpperCase(), key)}
     <h3 class="col-title">${c.line}</h3>
@@ -369,7 +380,7 @@ function listingPage({ root, title, heading, intro, list, chips, current, crumbs
 function home() {
   const root = '';
   return page({ title: 'Tso Bath & Body — Soak Well. Live Boldly.', description: OG.description, root, current: 'home', bodyClass: 'home',
-    main: `<section class="hero">
+    main: `${CONCEPT ? heroConcept(root) : `<section class="hero">
   <div class="wrap hero-grid">
     <div class="hero-copy">
       <p class="eyebrow">TSO BATH &amp; BODY · FORT WAYNE, INDIANA</p>
@@ -382,7 +393,7 @@ function home() {
     </div>
     <div class="hero-art">${emblem(root, '(min-width: 1024px) 520px, (orientation: landscape) 40vh, 72vw', 'emblem hero-emblem', true)}</div>
   </div>
-</section>
+</section>`}
 <section class="section" aria-labelledby="sig-h">
   <div class="wrap">
     <div class="section-head">
@@ -415,9 +426,9 @@ function home() {
       ${rule}
     </div>
     <ol class="steps" role="list">
-      <li>${icon('bubble', 'icon icon-step')}<div><h3>Drop it in</h3>${slot('DEMO-01', '4 / 3', 'Bath bomb entering water')}</div></li>
-      <li>${icon('bubble', 'icon icon-step')}<div><h3>Let it fizz</h3>${slot('DEMO-02', '4 / 3', 'Fizz in tub')}</div></li>
-      <li>${icon('bubble', 'icon icon-step')}<div><h3>Read the message</h3>${slot('DEMO-03', '4 / 3', 'Reveal card or digital reveal screen')}</div></li>
+      <li>${icon('bubble', 'icon icon-step')}<div><h3>Drop it in</h3>${slotOrConcept('DEMO-01', '4 / 3', 'Bath bomb entering water')}</div></li>
+      <li>${icon('bubble', 'icon icon-step')}<div><h3>Let it fizz</h3>${slotOrConcept('DEMO-02', '4 / 3', 'Fizz in tub')}</div></li>
+      <li>${icon('bubble', 'icon icon-step')}<div><h3>Read the message</h3>${slotOrConcept('DEMO-03', '4 / 3', 'Reveal card or digital reveal screen')}</div></li>
     </ol>
     <p class="note center">Fortune Collection bath bombs carry a fortune; Barracks Collection bath bombs carry a Mission Dispatch.</p>
   </div>
@@ -479,7 +490,7 @@ function collectionPage(key) {
 function giftSets() {
   const root = '../';
   const set = (id, col, title) => `<article class="card collection-card band-${col}">
-  ${slot(id, '4 / 3', title)}
+  ${slotOrConcept(id, '4 / 3', title)}
   <div class="card-body">
     ${eyebrow(COLLECTIONS[col].name.toUpperCase() + ' · PROPOSED', col)}
     <h3 class="col-title">${title}</h3>
@@ -503,7 +514,7 @@ function giftSets() {
       ${set('GIFT-01-B', 'barracks', 'Barracks gift set')}
     </div>
     <div class="giftband">
-      ${slot('GIFT-02', '4 / 3', 'Gift presentation and message card', ' style="max-width:360px"')}
+      ${slotOrConcept('GIFT-02', '4 / 3', 'Gift presentation and message card', ' style="max-width:360px"')}
       <div>
         <p class="eyebrow">Gift presentation</p>
         <h2 class="h3">Not sure which collection?</h2>
@@ -536,7 +547,7 @@ function productPage(p) {
     ${crumbs(root, [['Home', ''], [c.name, `collections/${p.collection}/`], [p.name]])}
     <div class="pdp-grid">
       <div class="gallery" data-gallery>
-        <div class="gallery-main">${['main', 'Angle 2', 'In use', 'Reveal', 'Pack'].map((v, i) => `<div class="gallery-slide" data-slide="${i}"${i ? ' hidden' : ''}>${slot(`${p.slot}${i ? '-' + 'ABCDE'[i] : ''}`, '1 / 1', `${p.name} — ${i ? v : 'main image'}`)}</div>`).join('')}</div>
+        <div class="gallery-main">${['main', 'Angle 2', 'In use', 'Reveal', 'Pack'].map((v, i) => `<div class="gallery-slide" data-slide="${i}"${i ? ' hidden' : ''}>${slotOrConcept(`${p.slot}${i ? '-' + 'ABCDE'[i] : ''}`, '1 / 1', `${p.name} — ${i ? v : 'main image'}`)}</div>`).join('')}</div>
         <div class="thumbs" role="group" aria-label="Product images">
           ${['Main', 'Angle 2', 'In use', 'Reveal', 'Pack'].map((v, i) => `<button type="button" class="thumb" data-thumb="${i}" aria-pressed="${i === 0}"><span>${v}</span></button>`).join('\n          ')}
         </div>
@@ -595,7 +606,7 @@ function ourStory() {
 </section>
 <section class="section section-tight">
   <div class="wrap story-grid">
-    ${slot('STORY-01', '3 / 2', 'Founders and General Tso')}
+    ${slotOrConcept('STORY-01', '3 / 2', 'Founders and General Tso')}
     <div>
       <p class="eyebrow">The makers</p>
       <h2>Soak Well. Live Boldly.</h2>
@@ -619,9 +630,9 @@ function ourStory() {
   <div class="wrap">
     <div class="section-head"><p class="eyebrow">How it’s made</p><h2 id="src-h">From ingredients to workshop</h2>${rule}</div>
     <div class="three-up">
-      <figure>${slot('SRC-01', '3 / 2', 'Ingredients flat-lay')}<figcaption>Ingredients</figcaption></figure>
-      <figure>${slot('SOAP-01', '16 / 9', 'Lather and texture')}<figcaption>Lather &amp; texture</figcaption></figure>
-      <figure>${slot('SRC-03', '3 / 2', 'Production workshop')}<figcaption>Workshop</figcaption></figure>
+      <figure>${slotOrConcept('SRC-01', '3 / 2', 'Ingredients flat-lay')}<figcaption>Ingredients</figcaption></figure>
+      <figure>${slotOrConcept('SOAP-01', '16 / 9', 'Lather and texture')}<figcaption>Lather &amp; texture</figcaption></figure>
+      <figure>${slotOrConcept('SRC-03', '3 / 2', 'Production workshop')}<figcaption>Workshop</figcaption></figure>
     </div>
   </div>
 </section>` });
@@ -909,3 +920,138 @@ for (const [rel, html] of Object.entries(files)) {
   writeFileSync(out, html);
 }
 console.log(`wrote ${Object.keys(files).length} files`);
+
+// ---- image review (owner approval before anything enters the storefront) ----
+// Hero concepts keep the approved full-emblem PNG on top of the generated cat (P3: every General Tso
+// depiction is the supplied artwork). The emblem is never cropped; a dark ground sits behind it.
+function heroConcept(root) {
+  const v = (id, w, half) => `${REVIEW_IMG}${id}-${half}.jpg ${half}w, ${REVIEW_IMG}${id}-${w}.jpg ${w}w`;
+  return `<section class="hero hero-concept" data-focus="HERO">
+  <div class="hc-media">
+    <picture>
+      <source media="(orientation: portrait) and (max-width: 899px)" srcset="${v('HERO-P-01', 1108, 554)}" sizes="100vw">
+      <source media="(max-width: 1023px)" srcset="${v('HERO-L-01', 1688, 844)}" sizes="100vw">
+      <img class="hc-photo" src="${REVIEW_IMG}HERO-D-01-1866.jpg" srcset="${v('HERO-D-01', 1866, 933)}" sizes="100vw" alt="" fetchpriority="high">
+    </picture>
+    <div class="hc-emblem">${emblem(root, '(orientation: portrait) and (max-width: 899px) 70vw, 34vw', 'emblem', true)}</div>
+    <span class="slot-id hc-label"><span class="hc-d">HERO-D-01</span><span class="hc-l">HERO-L-01</span><span class="hc-p">HERO-P-01</span> · CONCEPT + approved emblem</span>
+  </div>
+  <div class="wrap hc-copy">
+    <p class="eyebrow">TSO BATH &amp; BODY · FORT WAYNE, INDIANA</p>
+    <h1 class="display">Soak Well.<br>Live Boldly.</h1>
+    <p class="lead">Fizzy surprises. Handmade soaps. Legendary gifts.</p>
+    <div class="btn-row">
+      <a class="btn btn-primary" href="bath-bombs/">Shop Bath Bombs</a>
+      <a class="btn btn-secondary" href="soaps/">Shop Soaps</a>
+    </div>
+  </div>
+</section>
+`;
+}
+
+const CONCEPTS = {
+  'COL-F-01': { file: 'COL-F-01', w: 1448, half: 724 },
+  'COL-B-01': { file: 'COL-B-01', w: 1448, half: 724 },
+  'DEMO-01': { file: 'DEMO-01', w: 1448, half: 724 },
+  'PRD-01': { file: 'PRD-01-A', w: 1254, half: 627 },
+  'PRD-02': { file: 'PRD-02-A', w: 1254, half: 627 },
+  'PRD-03': { file: 'PRD-03-A', w: 1254, half: 627 },
+  'PRD-04': { file: 'PRD-04-A', w: 1254, half: 627 },
+};
+CONCEPT = CONCEPTS;
+const FRAMES = {
+  'home': ['', home()],
+  'collections-fortune': ['collections/fortune/', collectionPage('fortune')],
+  'collections-barracks': ['collections/barracks/', collectionPage('barracks')],
+  ...Object.fromEntries(PRODUCTS.map((p) => [`product-${p.slug}`, [`products/${p.slug}/`, productPage(p)]])),
+};
+CONCEPT = null;
+const FRAME_HEAD = (orig) => `<base href="${PAGES_BASE}${orig}">
+<link rel="stylesheet" href="${PAGES_BASE}image-review/frame.css?v=${ASSET_V}">
+<script>addEventListener('load',()=>{const f=new URLSearchParams(location.search).get('focus');const el=f&&document.querySelector('[data-focus="'+f+'"]');if(el)el.scrollIntoView({block:'center'});});</script>
+`;
+for (const [name, [orig, html]] of Object.entries(FRAMES)) {
+  const out = join(OUT, 'image-review', 'frames', `${name}.html`);
+  mkdirSync(dirname(out), { recursive: true });
+  writeFileSync(out, html.replace('<title>', FRAME_HEAD(orig) + '<title>')
+    .replace('<meta name="description"', '<meta name="tso-review" content="concept frame — not the storefront">\n<meta name="description"'));
+}
+console.log(`wrote ${Object.keys(FRAMES).length} review frames`);
+
+// Review page: one section per slot group; each shows the concept as generated, then live frames of the
+// real templates at the five test viewports. Static page, not linked from the storefront.
+const DEVICES = [
+  ['Desktop', 1440, 900], ['iOS Safari · portrait', 402, 874], ['iOS Safari · landscape', 874, 402],
+  ['Android Chrome · portrait', 412, 915], ['Android Chrome · landscape', 915, 412],
+];
+const RS = [
+  { ids: ['HERO-D-01', 'HERO-P-01', 'HERO-L-01'], title: 'Home hero', frame: 'home', focus: 'HERO',
+    files: [['HERO-D-01', '1866×843', '2880×1300', '6c083373797d677c'], ['HERO-P-01', '1108×1420', '1170×1500', '282b8f7b83f0b940'], ['HERO-L-01', '1869×842', '1688×760', 'b2eed7d665273903']],
+    notes: ['Each hero concept draws its own General Tso. Here the approved full-emblem PNG is placed over that cat, uncropped, on a dark ground — the generated cat is not shown as identity.',
+      'Desktop uses HERO-D-01 with the headline over its clear left third. iOS/Android portrait use HERO-P-01 with copy below (P3 HERO-P-01).',
+      'Phone landscape uses HERO-L-01, whose cat sits left of centre where the headline would go, so copy is shown below the photo. A HERO-L with a clear left third would let the copy sit over it.',
+      'HERO-D-01 is 1866 px wide against a 2880 px target: slightly soft on large retina desktops.'] },
+  { ids: ['COL-F-01', 'COL-B-01'], title: 'Collection cards (home + Collections)', frame: 'home', focus: 'COL-F-01',
+    files: [['COL-F-01', '1448×1086', '1600×1200', '8ac16d58b85affa1'], ['COL-B-01', '1448×1086', '1600×1200', 'bb219994e086c829']],
+    notes: ['Boxes show a generated cat badge: provisional packaging concept, not an approved replacement for the logo.'] },
+  { ids: ['DEMO-01'], title: 'The reveal · Drop it in', frame: 'home', focus: 'DEMO-01',
+    files: [['DEMO-01', '1448×1086', '1600×1200', '698d25aa5fdceaab']],
+    notes: ['Generated cat badge on the box in the background: provisional packaging concept.', 'DEMO-02 and DEMO-03 remain placeholders (DEMO-03 waits on the reveal decision).'] },
+  ...PRODUCTS.map((p) => ({ ids: [p.slot + '-A'], title: p.name + ' · main image', frame: `product-${p.slug}`, focus: p.slot,
+    files: [[p.slot + '-A', '1254×1254', '2000×2000', { 'PRD-01': '63516dc3b680f2a7', 'PRD-02': 'f73e2c00952497e1', 'PRD-03': 'd1b01e645b8e4221', 'PRD-04': 'e48e30501a3a58cb' }[p.slot]]],
+    notes: ['Shown as the product page main image and on every product card. Angles B–E remain placeholders.', 'Generated cat badge on the box: provisional packaging concept, not an approved replacement for the logo.', '1254 px against a 2000 px target: sharp at current display sizes; zoom would need the full export.'] })),
+];
+const reviewPage = `<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Image Review — Tso Bath &amp; Body</title>
+<meta name="theme-color" content="#071719">
+<link rel="icon" type="image/svg+xml" href="../favicon.svg?v=${ASSET_V}">
+<link rel="stylesheet" href="../assets/css/site.css?v=${ASSET_V}">
+<link rel="stylesheet" href="review.css?v=${ASSET_V}">
+</head>
+<body class="review">
+<header class="rv-head"><div class="wrap">
+  <p class="eyebrow">Owner review · not the storefront</p>
+  <h1>Website image concepts</h1>
+  <p class="lead">Ten concept images from 2026-10-15, each shown inside its real slot on the storefront templates at desktop, iOS and Android sizes. Nothing here is installed on the live site; approve or reject per slot.</p>
+  <ul class="rv-rules">
+    <li><strong>Identity:</strong> the approved General Tso PNG remains the authority. Heroes use the approved emblem in place of the generated cat.</li>
+    <li><strong>Packaging:</strong> the cat badges printed on generated boxes are provisional concept imagery, not an approved replacement for the logo.</li>
+    <li><strong>Not included:</strong> GIFT-01-F / GIFT-01-B (outstanding), DEMO-02, DEMO-03, product angles B–E, SRC/SOAP/STORY slots — they stay placeholders.</li>
+    <li>Gold <span class="rv-chip">CONCEPT</span> labels mark every concept image inside the frames.</li>
+  </ul>
+  <nav class="rv-toc" aria-label="Slots">${RS.map((r, i) => `<a href="#s${i}">${r.ids.join(' · ')}</a>`).join('')}<a href="#devices">Device captures</a></nav>
+</div></header>
+<main class="wrap">
+${RS.map((r, i) => `<section class="rv-slot" id="s${i}">
+  <h2>${r.title}</h2>
+  <div class="rv-table" tabindex="0" role="region" aria-label="Slot details"><table class="rv-meta"><thead><tr><th>Slot</th><th>Generated</th><th>Target</th><th>sha256</th><th>As generated</th></tr></thead><tbody>
+  ${r.files.map(([id, g, t, h]) => `<tr><td>${id}</td><td>${g}</td><td>${t}</td><td><code>${h}…</code></td><td><a class="link" href="img/${id}-${{ 'HERO-D-01': 1866, 'HERO-P-01': 1108, 'HERO-L-01': 1688 }[id] || (id.startsWith('PRD') ? 1254 : 1448)}.jpg">open</a></td></tr>`).join('')}
+  </tbody></table></div>
+  <div class="rv-raw">${r.files.map(([id]) => `<a href="img/${id}-${{ 'HERO-D-01': 1866, 'HERO-P-01': 1108, 'HERO-L-01': 1688 }[id] || (id.startsWith('PRD') ? 1254 : 1448)}.jpg"><img src="img/${id}-${{ 'HERO-D-01': 933, 'HERO-P-01': 554, 'HERO-L-01': 844 }[id] || (id.startsWith('PRD') ? 627 : 724)}.jpg" alt="${id} as generated" loading="lazy"><span>${id} as generated</span></a>`).join('')}</div>
+  <ul class="rv-notes">${r.notes.map((n) => `<li>${n}</li>`).join('')}</ul>
+  <div class="rv-devices">
+  ${DEVICES.map(([label, w, h]) => `<figure class="rv-device" style="--w:${w};--h:${h}"><figcaption>${label} <span>${w}×${h}</span></figcaption><div class="rv-screen"><iframe src="frames/${r.frame}.html?focus=${r.focus}" width="${w}" height="${h}" loading="lazy" title="${esc(r.title)} — ${label}"></iframe></div></figure>`).join('\n  ')}
+  </div>
+  <p class="rv-decision">Decision for ${r.ids.join(', ')}: <strong>approve</strong> · <strong>approve with changes</strong> · <strong>reject</strong></p>
+</section>`).join('\n')}
+<section class="rv-slot" id="devices">
+  <h2>Device captures</h2>
+  <p>Screenshots from the iOS Simulator (iPhone 17, Safari) and the Android emulator (Chrome 113, Android 14), portrait and landscape, of the review frames above.</p>
+  <div class="rv-captures" data-captures></div>
+</section>
+</main>
+<script>
+// Fit each frame to its column; frames keep their true CSS viewport size.
+function fit(){document.querySelectorAll('.rv-device').forEach((f)=>{const w=+getComputedStyle(f).getPropertyValue('--w');const h=+getComputedStyle(f).getPropertyValue('--h');const s=Math.min(1,f.clientWidth/w);f.style.setProperty('--s',s);f.querySelector('.rv-screen').style.height=(h*s)+'px';});}
+addEventListener('resize',fit);fit();
+</script>
+</body>
+</html>
+`;
+writeFileSync(join(OUT, 'image-review', 'index.html'), reviewPage);
+console.log('wrote image-review/index.html');
