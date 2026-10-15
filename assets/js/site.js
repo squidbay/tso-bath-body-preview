@@ -410,7 +410,7 @@
       launcher.setAttribute('aria-expanded', String(open));
       const full = open && matchMedia('(max-width:639px) and (orientation:portrait), (max-width:479px), (orientation:landscape) and (max-height:600px)').matches;
       if (open !== document.body.classList.contains('locked') && (full || !open)) lock(full);
-      if (open) { chatOpener = document.activeElement; $('.chat-dot', launcher).hidden = true; store.set('tso-chat-seen', true); setTimeout(() => input.focus({ preventScroll: true }), 50); }
+      if (open) { chatOpener = document.activeElement; $('.chat-dot', launcher).hidden = true; store.set('tso-chat-seen', true); setTimeout(() => (matchMedia('(hover:hover) and (pointer:fine)').matches ? input : chat).focus({ preventScroll: true }), 50); }
       else if (chatOpener && chatOpener.focus) chatOpener.focus();
     };
     $$('[data-chat-open]').forEach((b) => b.addEventListener('click', () => { if (drawer && !drawer.hidden) setDrawer(false); setChat(true); }));

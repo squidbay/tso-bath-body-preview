@@ -436,6 +436,7 @@ body.locked{overflow:hidden}
 .chat-launch:hover{opacity:var(--tso-o-hover)}
 .chat-open .chat-launch-wrap{display:none}
 .chat{position:fixed;z-index:65;right:24px;bottom:24px;width:400px;height:min(640px,calc(100svh - 48px));display:flex;flex-direction:column;background:var(--tso-bg-2);border:1px solid var(--tso-border);border-radius:var(--tso-radius-lg);box-shadow:var(--tso-shadow-3);overflow:hidden;color:var(--tso-body)}
+.chat:focus{outline:none}
 .chat-head{display:flex;align-items:center;gap:12px;padding:12px 8px 12px 16px;border-bottom:1px solid var(--tso-border);background:var(--tso-bg)}
 .cat-chat-head{width:48px;height:48px;border-radius:50%;box-shadow:0 0 0 2px var(--tso-gold)}
 .chat-head>div{flex:1;min-width:0}
