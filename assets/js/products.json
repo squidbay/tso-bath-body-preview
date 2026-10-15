@@ -1,0 +1,38 @@
+{
+  "fortune-cookie-bath-bomb": {
+    "name": "Fortune Cookie Bath Bomb™",
+    "collection": "Fortune Collection",
+    "key": "fortune",
+    "type": "Bath Bomb",
+    "slot": "PRD-01",
+    "max": 10,
+    "tallow": false
+  },
+  "wonton-in-the-tub": {
+    "name": "Wonton’ in the Tub™",
+    "collection": "Fortune Collection",
+    "key": "fortune",
+    "type": "Soap",
+    "slot": "PRD-02",
+    "max": 3,
+    "tallow": false
+  },
+  "the-exploding-dumpling": {
+    "name": "The Exploding Dumpling™",
+    "collection": "Barracks Collection",
+    "key": "barracks",
+    "type": "Bath Bomb",
+    "slot": "PRD-03",
+    "max": 0,
+    "tallow": false
+  },
+  "nine-lives-musk": {
+    "name": "Nine Lives Musk™",
+    "collection": "Barracks Collection",
+    "key": "barracks",
+    "type": "Tallow Soap",
+    "slot": "PRD-04",
+    "max": 10,
+    "tallow": true
+  }
+}

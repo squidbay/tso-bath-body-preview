@@ -1,0 +1,16 @@
+{
+  "name": "Tso Bath & Body",
+  "short_name": "Tso Bath & Body",
+  "description": "Fizzy surprises. Handmade soaps. Legendary gifts. Handmade in Fort Wayne, Indiana.",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#071719",
+  "background_color": "#071719",
+  "icons": [
+    { "src": "assets/icons/android-any-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/android-any-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "assets/icons/android-maskable-192.png", "sizes": "192x192", "type": "image/png", "purpose": "maskable" },
+    { "src": "assets/icons/android-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}
