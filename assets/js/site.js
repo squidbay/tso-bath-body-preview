@@ -76,7 +76,7 @@
     drawer.hidden = !open; scrim.hidden = !open;
     openers.forEach((b) => b.setAttribute('aria-expanded', String(open)));
     lock(open);
-    if (open) { lastFocus = document.activeElement; $('a,button', drawer).focus(); }
+    if (open) { lastFocus = document.activeElement; drawer.focus(); }
     else if (lastFocus) lastFocus.focus();
   }
   openers.forEach((b) => b.addEventListener('click', () => setDrawer(true)));
@@ -85,7 +85,8 @@
     if (e.key === 'Escape' && drawer && !drawer.hidden) setDrawer(false);
     if (e.key === 'Tab' && drawer && !drawer.hidden) {
       const f = $$('a,button', drawer); const first = f[0]; const last = f[f.length - 1];
-      if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+      if (document.activeElement === drawer) { e.preventDefault(); (e.shiftKey ? last : first).focus(); }
+      else if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });

@@ -169,6 +169,7 @@ em{font-style:italic;font-weight:500}
 /* ---------- drawer ---------- */
 .drawer-scrim{position:fixed;inset:0;z-index:60;background:var(--tso-scrim)}
 .drawer{position:fixed;inset:0 auto 0 0;z-index:61;width:min(360px,88vw);display:flex;flex-direction:column;background:var(--tso-bg);border-right:1px solid var(--tso-border);box-shadow:var(--tso-shadow-3);padding:env(safe-area-inset-top) 0 env(safe-area-inset-bottom) env(safe-area-inset-left);overflow-y:auto;overscroll-behavior:contain}
+.drawer:focus{outline:none}
 .drawer-head{display:flex;align-items:center;justify-content:space-between;min-height:56px;padding:0 8px 0 20px;border-bottom:1px solid var(--tso-border)}
 .drawer-list{list-style:none;margin:0;padding:8px 0}
 .drawer-list a{display:flex;align-items:center;min-height:48px;padding:0 20px;font-size:17px;font-weight:700;letter-spacing:.04em;color:var(--tso-headline);text-decoration:none}
@@ -213,7 +214,7 @@ body.locked{overflow:hidden}
 .pdp-info.band-fortune,.pdp-info.band-barracks{border-top:0}
 .card-body{padding:20px;display:flex;flex-direction:column;flex:1}
 .card-body .btn{margin-top:auto}
-.card-media{display:block}
+.card-media{display:block;text-decoration:none}
 .card-title{font-size:var(--tso-h3);margin:0 0 8px}
 .card-title a{display:inline-block;padding-block:11px;margin-block:-11px;text-decoration:none}
 .card-title a:hover{color:var(--tso-gold)}
@@ -429,7 +430,7 @@ body.locked{overflow:hidden}
 @media (min-width:1024px){.chat-launch-wrap{right:24px;bottom:24px}}
 .chat-launch{position:relative;display:flex;align-items:center;gap:0;height:56px;min-width:56px;padding:0;border-radius:var(--tso-radius-pill);border:0;background:var(--tso-bg);box-shadow:var(--tso-shadow-2)}
 .cat-launch{width:56px;height:56px;border-radius:50%;box-shadow:0 0 0 2px var(--tso-gold);background:var(--tso-bg)}
-.chat-dot{position:absolute;top:2px;right:2px;width:12px;height:12px;border-radius:50%;background:var(--tso-red);box-shadow:0 0 0 2px var(--tso-bg)}
+.chat-dot{position:absolute;top:2px;left:42px;width:12px;height:12px;border-radius:50%;background:var(--tso-red);box-shadow:0 0 0 2px var(--tso-bg)}
 .chat-pill{max-width:0;overflow:hidden;white-space:nowrap;font-size:14px;font-weight:700;letter-spacing:.12em;color:var(--tso-gold);transition:max-width .3s,padding .3s;text-transform:uppercase}
 .chat-launch.expanded .chat-pill{max-width:120px;padding:0 18px 0 12px}
 .chat-launch:hover{opacity:var(--tso-o-hover)}

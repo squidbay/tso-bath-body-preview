@@ -172,7 +172,7 @@ function header({ root, current }) {
   </div>
 </header>
 <div class="drawer-scrim" data-menu-close hidden></div>
-<nav class="drawer" id="drawer" aria-label="Menu" hidden>
+<nav class="drawer" id="drawer" aria-label="Menu" tabindex="-1" hidden>
   <div class="drawer-head">
     <span class="wordmark">TSO BATH &amp; BODY</span>
     <button class="hdr-btn" type="button" data-menu-close aria-label="Close menu">${icon('close')}</button>
