@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '6';
+const ASSET_V = '7';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -285,7 +285,7 @@ function chat(root) {
   <div class="chat-chips" data-chat-chips>
     <button class="chip" type="button" data-ask="Gift for her">Gift for her</button>
     <button class="chip" type="button" data-ask="Gift for him">Gift for him</button>
-    <button class="chip" type="button" data-ask="Is it vegan?">Is it vegan?</button>
+    <button class="chip" type="button" data-ask="Is it 100% tallow?">Is it 100% tallow?</button>
   </div>
   <form class="chat-form" data-chat-form>
     <label class="sr-only" for="chat-input">Message General Tso</label>
