@@ -487,40 +487,74 @@ body.locked{overflow:hidden}
 .slot-photo{position:relative;background:var(--tso-bg-2)}
 .slot-photo>img,.slot-concept>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bag-line .slot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* home hero — moodboard composition: approved compact cat + branding on a clean Midnight Jade ground.
-   Gold glow behind the cat and the P3 wave ornament along the foot; no photo, no masking, no filters. */
-.hero-brand{position:relative;overflow:hidden;border-bottom:1px solid var(--tso-border);
-  background:radial-gradient(ellipse 46% 70% at 27% 52%,rgba(212,180,106,.16),rgba(212,180,106,0) 70%),
-    radial-gradient(ellipse 60% 90% at 80% 10%,rgba(18,61,58,.9),rgba(18,61,58,0) 70%),
-    linear-gradient(180deg,var(--tso-bg) 0%,var(--tso-bg-2) 100%)}
-.hero-brand::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:24px;opacity:.55;pointer-events:none;
-  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24' fill='none' stroke='%238F7238' stroke-width='1.5'%3E%3Cpath d='M0 18c10-14 20-14 30 0s20 14 30 0 20-14 30 0 20 14 30 0'/%3E%3C/svg%3E") repeat-x center/120px 24px}
-.hb-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gutter);align-items:center;padding-block:56px 72px}
-.hb-art{display:flex;justify-content:center}
-.hb-cat{width:min(100%,440px);height:auto;aspect-ratio:1;object-fit:contain}
+/* home hero — moodboard composition: approved compact cat on a dressed Midnight Jade stage.
+   Layers (back to front): jade atmosphere + warm lantern glows, blossom ornaments (P3 blossom-fortune),
+   layered P3 waves along the foot, then gold rings + gold light behind the cat. All decoration is CSS / P3
+   ornament geometry in P2 colours; the cat artwork is untouched (no filter, no shadow on the image). */
+.hero-brand{position:relative;overflow:hidden;isolation:isolate;border-bottom:1px solid var(--tso-border);
+  background:radial-gradient(ellipse 55% 85% at 26% 50%,rgba(18,61,58,.95),rgba(18,61,58,0) 72%),
+    radial-gradient(ellipse 50% 70% at 85% 0%,rgba(18,61,58,.75),rgba(18,61,58,0) 70%),
+    linear-gradient(180deg,var(--tso-bg) 0%,var(--tso-bg-2) 70%,var(--tso-bg) 100%)}
+.hb-deco{position:absolute;inset:0;z-index:-1;pointer-events:none}
+.hb-lantern{position:absolute;border-radius:50%}
+.hb-lantern-a{left:-6%;top:-30%;width:42vw;max-width:620px;aspect-ratio:1;background:radial-gradient(closest-side,rgba(246,195,165,.2),rgba(212,180,106,.09) 55%,rgba(212,180,106,0) 100%)}
+.hb-lantern-b{right:-8%;top:-20%;width:38vw;max-width:560px;aspect-ratio:1;background:radial-gradient(closest-side,rgba(212,180,106,.17),rgba(212,180,106,.05) 55%,rgba(212,180,106,0) 100%)}
+.hb-bloom{position:absolute;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cg fill='%23EDA3B4'%3E%3Ccircle cx='12' cy='6' r='3.2'/%3E%3Ccircle cx='17.7' cy='10.1' r='3.2'/%3E%3Ccircle cx='15.5' cy='16.9' r='3.2'/%3E%3Ccircle cx='8.5' cy='16.9' r='3.2'/%3E%3Ccircle cx='6.3' cy='10.1' r='3.2'/%3E%3C/g%3E%3Ccircle cx='12' cy='12' r='2' fill='%23D4B46A'/%3E%3C/svg%3E") center/contain no-repeat}
+.hb-bloom-1{left:4%;top:10%;width:40px;height:40px;opacity:.85;transform:rotate(12deg)}
+.hb-bloom-2{left:8%;top:22%;width:22px;height:22px;opacity:.65;transform:rotate(-20deg)}
+.hb-bloom-3{left:35%;top:70%;width:26px;height:26px;opacity:.6;transform:rotate(30deg)}
+.hb-bloom-4{right:6%;top:12%;width:34px;height:34px;opacity:.75;transform:rotate(-8deg)}
+.hb-bloom-5{right:10%;top:22%;width:18px;height:18px;opacity:.55;transform:rotate(18deg)}
+.hb-waves{position:absolute;left:0;right:0;bottom:0;height:64px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24' fill='none' stroke='%23D4B46A' stroke-width='1.5'%3E%3Cpath d='M0 18c10-14 20-14 30 0s20 14 30 0 20-14 30 0 20 14 30 0'/%3E%3C/svg%3E") repeat-x 0 calc(100% - 10px)/120px 24px,url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24' fill='none' stroke='%238F7238' stroke-width='1.5'%3E%3Cpath d='M0 18c10-14 20-14 30 0s20 14 30 0 20-14 30 0 20 14 30 0'/%3E%3C/svg%3E") repeat-x 60px calc(100% - 28px)/120px 24px,
+    linear-gradient(180deg,rgba(13,36,41,0) 0%,rgba(18,61,58,.55) 100%);opacity:.8}
+.hb-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gutter);align-items:center;padding-block:64px 88px}
+.hb-art{position:relative;display:flex;justify-content:center;align-items:center}
+/* gold light + double ring behind the cat (gold, never dark) */
+.hb-art::before{content:"";position:absolute;z-index:0;width:min(118%,520px);aspect-ratio:1;border-radius:50%;
+  background:radial-gradient(closest-side,rgba(212,180,106,.22),rgba(212,180,106,.08) 55%,rgba(212,180,106,0) 100%)}
+.hb-ring{position:absolute;z-index:0;width:min(104%,470px);aspect-ratio:1;border-radius:50%;border:1px solid rgba(212,180,106,.6);outline:1px solid rgba(143,114,56,.55);outline-offset:9px}
+.hb-ring::before,.hb-ring::after{content:"";position:absolute;width:9px;height:9px;background:var(--tso-gold);transform:rotate(45deg);left:calc(50% - 4.5px)}
+.hb-ring::before{top:-5px}.hb-ring::after{bottom:-5px}
+.hb-cat{position:relative;z-index:1;width:min(100%,400px);height:auto;aspect-ratio:1;object-fit:contain}
 .hb-copy{min-width:0}
-.hb-logo{display:block;width:min(100%,420px);height:auto;aspect-ratio:3;object-fit:contain;margin:0 0 24px -6px}
 .hb-copy .lead{max-width:40ch}
-/* below desktop the header already carries the brand; keep the hero compact and cat-led */
+.hb-copy .display{text-shadow:0 2px 24px rgba(7,23,25,.6)}
+.hb-copy::after{content:"";display:block;width:min(100%,360px);height:16px;margin-top:28px;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 400 16' fill='none'%3E%3Cpath d='M0 8h184M216 8h400' stroke='%238F7238'/%3E%3Cpath d='M200 2l6 6-6 6-6-6z' fill='%23D4B46A'/%3E%3C/svg%3E") left center/100% 16px no-repeat}
 @media (max-width:1023px){
-  .hb-logo{display:none}
-  .hb-grid{padding-block:24px 48px}
+  .hb-grid{padding-block:28px 56px}
+  .hb-copy::after{display:none}
+  .hb-bloom-3{display:none}
 }
 @media (orientation:portrait) and (max-width:1023px){
-  .hero-brand{background:radial-gradient(ellipse 70% 38% at 50% 22%,rgba(212,180,106,.16),rgba(212,180,106,0) 70%),linear-gradient(180deg,var(--tso-bg) 0%,var(--tso-bg-2) 100%)}
-  .hb-grid{grid-template-columns:1fr;gap:12px;text-align:center}
-  .hb-cat{width:min(46vw,190px)}
+  .hb-grid{grid-template-columns:1fr;gap:16px;text-align:center}
+  .hb-cat{width:min(42vw,170px)}
+  .hb-art{margin-bottom:14px}
+  .hb-ring{width:min(48vw,196px)}
+  .hb-art::before{width:min(64vw,260px)}
+  .hb-lantern-a{width:90vw;left:-30%;top:-14%}
+  .hb-lantern-b{width:80vw;right:-35%;top:-10%}
+  .hb-bloom-1{left:6%;top:5%;width:24px;height:24px}
+  .hb-bloom-2{left:16%;top:15%}
+  .hb-bloom-4{right:7%;top:8%;width:22px;height:22px}
+  .hb-bloom-5{right:14%;top:27%}
+  .hb-bloom-1{width:26px;height:26px}
   .hb-copy .lead{margin-inline:auto}
   .hb-copy .btn-row{justify-content:center;margin-top:20px}
 }
 @media (orientation:landscape) and (max-width:1023px){
-  .hb-grid{grid-template-columns:auto minmax(0,1fr);gap:28px;padding-block:16px 36px;min-height:min(420px,calc(100svh - var(--hdr) - env(safe-area-inset-top)))}
-  .hb-cat{width:min(220px,calc(100svh - var(--hdr) - 80px));min-width:120px}
+  .hb-grid{grid-template-columns:auto minmax(0,1fr);gap:36px;padding-block:16px 40px;min-height:min(420px,calc(100svh - var(--hdr) - env(safe-area-inset-top)))}
+  .hb-cat{width:min(200px,calc(100svh - var(--hdr) - 96px));min-width:112px}
+  .hb-ring{width:calc(100% + 18px);max-width:calc(100% + 18px);min-width:0;aspect-ratio:1;outline-offset:6px}
+  .hb-art{padding:10px 18px;margin-left:8px}
+  .hb-art::before{width:min(280px,calc(100svh - var(--hdr) - 24px))}
   .hb-copy .eyebrow{margin-bottom:6px}
   .hb-copy .display{font-size:clamp(30px,10svh,44px);margin-bottom:8px}
   .hb-copy .lead{margin-bottom:0}
   .hb-copy .btn-row{margin-top:14px}
-  .hero-brand::after{bottom:4px;opacity:.4}
+  .hb-waves{height:44px;opacity:.55}
+  .hb-bloom-2,.hb-bloom-5{display:none}
 }
 
 /* ---------- GIFT-03 · The Double Happiness Chest ---------- */
