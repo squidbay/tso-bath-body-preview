@@ -1,0 +1,156 @@
+[
+  {
+    "name": "b2-landscape / (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /shop/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /bath-bombs/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /soaps/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /collections/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /collections/fortune/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /collections/barracks/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /gift-sets/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /products/fortune-cookie-bath-bomb/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /products/wonton-in-the-tub/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /products/the-exploding-dumpling/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /products/nine-lives-musk/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /our-story/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /help/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /bag/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /checkout/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /order-confirmed/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /search/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /search/?q=lavender (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /privacy/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /terms/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /accessibility/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape /collections/nothing-here/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-landscape pdp stepper capped at 3",
+    "ok": true
+  },
+  {
+    "name": "b2-landscape toast fully on screen",
+    "ok": true,
+    "detail": "{\"x\":336.9821472167969,\"y\":170.6666717529297,\"width\":241.08334350585938,\"height\":49.5238037109375}"
+  },
+  {
+    "name": "b2-landscape bag chip = 3",
+    "ok": true
+  },
+  {
+    "name": "b2-landscape chat 60% right sheet",
+    "ok": true,
+    "detail": "{\"x\":366.0238037109375,\"y\":0,\"width\":549.0238037109375,\"height\":308.19049072265625}"
+  },
+  {
+    "name": "b2-landscape chat does not pop keyboard (input not focused)",
+    "ok": true
+  },
+  {
+    "name": "b2-landscape chat answers with Fortune suggestions",
+    "ok": true
+  },
+  {
+    "name": "b2-landscape drawer opens",
+    "ok": true
+  },
+  {
+    "name": "b2-landscape drawer closes",
+    "ok": true
+  },
+  {
+    "name": "b2-landscape no page errors",
+    "ok": true,
+    "detail": ""
+  }
+]

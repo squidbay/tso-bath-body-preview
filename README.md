@@ -30,3 +30,18 @@ The ten images approved on `image-review/` are live (commit `cb2188e`; chat chip
 | Interaction flows incl. new "Is it 100% tallow?" chip | 61 / 61 live (`photos-e94a49f/flows/`) |
 | Android Chrome 113 / Android 14 — 23 pages + 9 flows | portrait 32 / 32, landscape 32 / 32 |
 | iOS Safari, iPhone 17 / iOS 26.5 — home, collections, 2 PDPs, shop, bag | portrait + landscape captured, correct (`photos-e94a49f/ios-safari/`) |
+
+## Batch 2 installed + hero ring removed — re-verification at `ba85a11` (2026-10-15)
+
+Owner approved all five batch-2 slots (DEMO-02, DEMO-03 Fortune, GIFT-01-F, GIFT-01-B, GIFT-02) and asked to remove the black ring around the hero emblem.
+
+| Check | Result |
+|---|---|
+| Deployed files vs repository | 175 / 175 identical |
+| Browser sweep, 23 pages × 10 viewports | 230 / 230 clean |
+| Every installed photo loads (14 pages incl. gift sets; desktop + phone) | 50 / 50 and 50 / 50 |
+| Hero emblem: soft falloff, no hard ring, no generated cat visible, 7 sizes at 2× | 7 / 7 (`hero-zoom/`) |
+| Reveal note: 32px below the steps, centred (desktop + phone) | measured 32px, centred |
+| Interaction flows | 61 / 61 |
+| Android Chrome 113 / Android 14 — 23 pages + 9 flows | portrait 32 / 32, landscape 32 / 32 |
+| iOS Safari, iPhone 17 / iOS 26.5 — home hero, reveal, gift sets, Wonton PDP | portrait + landscape correct (`ios-safari/`) |

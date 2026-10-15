@@ -1,0 +1,156 @@
+[
+  {
+    "name": "b2-portrait / (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /shop/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /bath-bombs/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /soaps/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /collections/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /collections/fortune/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /collections/barracks/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /gift-sets/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /products/fortune-cookie-bath-bomb/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /products/wonton-in-the-tub/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /products/the-exploding-dumpling/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /products/nine-lives-musk/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /our-story/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /help/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /bag/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /checkout/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /order-confirmed/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /search/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /search/?q=lavender (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /privacy/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /terms/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /accessibility/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait /collections/nothing-here/ (412×811)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "b2-portrait pdp stepper capped at 3",
+    "ok": true
+  },
+  {
+    "name": "b2-portrait toast fully on screen",
+    "ok": true,
+    "detail": "{\"x\":85.55357360839844,\"y\":673.5238037109375,\"width\":241.0833282470703,\"height\":49.5238037109375}"
+  },
+  {
+    "name": "b2-portrait bag chip = 3",
+    "ok": true
+  },
+  {
+    "name": "b2-portrait chat full sheet",
+    "ok": true,
+    "detail": "{\"x\":0,\"y\":0,\"width\":412.19049072265625,\"height\":811.047607421875}"
+  },
+  {
+    "name": "b2-portrait chat does not pop keyboard (input not focused)",
+    "ok": true
+  },
+  {
+    "name": "b2-portrait chat answers with Fortune suggestions",
+    "ok": true
+  },
+  {
+    "name": "b2-portrait drawer opens",
+    "ok": true
+  },
+  {
+    "name": "b2-portrait drawer closes",
+    "ok": true
+  },
+  {
+    "name": "b2-portrait no page errors",
+    "ok": true,
+    "detail": ""
+  }
+]
