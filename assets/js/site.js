@@ -314,7 +314,7 @@
         lines.innerHTML = keys.map((slug) => {
           const d = p[slug];
           return `<li class="bag-line" data-line="${slug}">
-  <div class="slot" style="aspect-ratio:1/1" role="img" aria-label="${d.name}"><span class="slot-id">${d.slot}</span></div>
+  ${d.img ? `<div class="slot slot-photo" style="aspect-ratio:1/1"><img src="${d.img}" alt="${d.name}" loading="lazy"></div>` : `<div class="slot" style="aspect-ratio:1/1" role="img" aria-label="${d.name}"><span class="slot-id">${d.slot}</span></div>`}
   <div>
     <p class="eyebrow eyebrow-${d.key}">${d.collection.toUpperCase()}</p>
     <h2><a href="${root}products/${slug}/">${d.name}</a></h2>

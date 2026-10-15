@@ -10,6 +10,8 @@
 | Brand artwork | The three approved PNGs, unchanged | Horizontal lockup (header, OG), full emblem (hero, story, confirmation, OG), compact cat (mobile header, chat, footer, empty states). Always `object-fit: contain` at the native ratio, WebP derivatives with PNG fallback. |
 | Copy | P1/P3 approved lines only | Moodboard claims (ingredients, sourcing, "veteran owned", taglines) are **not** used — see P3 `MOODBOARD_CLAIMS_REGISTER.md`. |
 
+| Photography | Owner-approved concept images, 2026-10-15 (all ten slots, via `image-review/`) | Source ZIP `Tso_Bath_Body_Website_Image_Concepts_2026-10-15.zip` (sha256 `bff305beb0eda558…`). Packaging cats are provisional concept art. Hero: approved emblem PNG over the generated cat, never cropped, opaque ground. Phone landscape shows HERO-L-01 with copy below it (its cat sits where the headline would go). |
+
 ## Deliberate choices where the authority is internally inconsistent
 
 - **Desktop header logo size.** P3 page 11 says 180×60; P3 page 04 and the README say 220×73 with a 200 px minimum width so "Fort Wayne, Indiana" stays legible. The preview uses **210×70**: it meets the 200 px minimum and fits inside the 72 px header.

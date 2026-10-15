@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '5';
+const ASSET_V = '6';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -86,16 +86,29 @@ const emblem = (root, sizes, cls = 'emblem', eager = false) => `<picture>
 // Image slots without final imagery: striped P3 placeholder labelled with the slot ID.
 const slot = (id, ratio, label, extra = '') => `<div class="slot" style="aspect-ratio:${ratio}"${extra} role="img" aria-label="${esc(label)} — image to come (${id})"><span class="slot-id">${id}</span></div>`;
 
-// Image review only (image-review/): when CONCEPT is set, slots that have a concept image render it,
-// labelled CONCEPT. The storefront build never sets CONCEPT, so its output is unchanged.
-let CONCEPT = null;
-const REVIEW_V = 'r4'; // cache key for image-review/ styles only
+// Owner-approved images (2026-10-15, all ten concept slots). Packaging cats in these photos are provisional
+// concept art, not a replacement for the logo; the approved emblem PNG covers the generated cat in heroes.
+// Slots without an entry keep the striped P3 placeholder.
+const PHOTOS = {
+  'COL-F-01': { file: 'COL-F-01', w: 1448, half: 724 },
+  'COL-B-01': { file: 'COL-B-01', w: 1448, half: 724 },
+  'DEMO-01': { file: 'DEMO-01', w: 1448, half: 724 },
+  'PRD-01': { file: 'PRD-01-A', w: 1254, half: 627 },
+  'PRD-02': { file: 'PRD-02-A', w: 1254, half: 627 },
+  'PRD-03': { file: 'PRD-03-A', w: 1254, half: 627 },
+  'PRD-04': { file: 'PRD-04-A', w: 1254, half: 627 },
+};
+const PHOTO_DIR = PAGES_BASE + 'assets/photos/';
+// Image review record (image-review/): REVIEW=true renders the same images labelled CONCEPT.
+let REVIEW = false;
+const REVIEW_V = 'r5'; // cache key for image-review/ styles only
 const REVIEW_IMG = PAGES_BASE + 'image-review/img/';
 const _slot = slot;
 const slotOrConcept = (id, ratio, label, extra = '') => {
-  const c = CONCEPT && CONCEPT[id];
+  const c = PHOTOS[id];
   if (!c) return _slot(id, ratio, label, extra);
-  return `<div class="slot slot-concept" style="aspect-ratio:${ratio}"${extra} data-focus="${id}"><img src="${REVIEW_IMG}${c.file}-${c.w}.jpg" srcset="${REVIEW_IMG}${c.file}-${c.half}.jpg ${c.half}w, ${REVIEW_IMG}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1024px) 50vw, 100vw" alt="${esc(label)} — concept image (${c.file}), not final" loading="lazy" decoding="async"><span class="slot-id">${c.file} · CONCEPT</span></div>`;
+  const dir = REVIEW ? REVIEW_IMG : PHOTO_DIR;
+  return `<div class="slot ${REVIEW ? 'slot-concept' : 'slot-photo'}" style="aspect-ratio:${ratio}"${extra} data-focus="${id}"><img src="${dir}${c.file}-${c.w}.jpg" srcset="${dir}${c.file}-${c.half}.jpg ${c.half}w, ${dir}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1024px) 50vw, 100vw" alt="${esc(label)}${REVIEW ? ` — concept image (${c.file}), not final` : ''}" loading="lazy" decoding="async">${REVIEW ? `<span class="slot-id">${c.file} · CONCEPT</span>` : ''}</div>`;
 };
 
 // ---- page shell ----
@@ -381,20 +394,7 @@ function listingPage({ root, title, heading, intro, list, chips, current, crumbs
 function home() {
   const root = '';
   return page({ title: 'Tso Bath & Body — Soak Well. Live Boldly.', description: OG.description, root, current: 'home', bodyClass: 'home',
-    main: `${CONCEPT ? heroConcept(root) : `<section class="hero">
-  <div class="wrap hero-grid">
-    <div class="hero-copy">
-      <p class="eyebrow">TSO BATH &amp; BODY · FORT WAYNE, INDIANA</p>
-      <h1 class="display">Soak Well.<br>Live Boldly.</h1>
-      <p class="lead">Fizzy surprises. Handmade soaps. Legendary gifts.</p>
-      <div class="btn-row">
-        <a class="btn btn-primary" href="bath-bombs/">Shop Bath Bombs</a>
-        <a class="btn btn-secondary" href="soaps/">Shop Soaps</a>
-      </div>
-    </div>
-    <div class="hero-art">${emblem(root, '(min-width: 1024px) 520px, (orientation: landscape) 40vh, 72vw', 'emblem hero-emblem', true)}</div>
-  </div>
-</section>`}
+    main: `${heroPhoto(root)}
 <section class="section" aria-labelledby="sig-h">
   <div class="wrap">
     <div class="section-head">
@@ -913,6 +913,7 @@ for (const p of PRODUCTS) files[`products/${p.slug}/index.html`] = productPage(p
 files['assets/js/products.json'] = JSON.stringify(Object.fromEntries(PRODUCTS.map((p) => [p.slug, {
   name: p.name, collection: COLLECTIONS[p.collection].name, key: p.collection, type: p.type, slot: p.slot,
   max: p.stock === 'out' ? 0 : p.stock === 'low' ? p.left : 10, tallow: p.tallow || '',
+  img: PHOTOS[p.slot] ? `${PHOTO_DIR}${PHOTOS[p.slot].file}-${PHOTOS[p.slot].half}.jpg` : '',
 }])), null, 2) + '\n';
 
 for (const [rel, html] of Object.entries(files)) {
@@ -922,21 +923,20 @@ for (const [rel, html] of Object.entries(files)) {
 }
 console.log(`wrote ${Object.keys(files).length} files`);
 
-// ---- image review (owner approval before anything enters the storefront) ----
-// Hero concepts keep the approved full-emblem PNG on top of the generated cat (P3: every General Tso
-// depiction is the supplied artwork). The emblem is never cropped; a dark ground sits behind it.
-function heroConcept(root) {
-  const v = (id, w, half) => `${REVIEW_IMG}${id}-${half}.jpg ${half}w, ${REVIEW_IMG}${id}-${w}.jpg ${w}w`;
+// Home hero: the owner-approved photo with the approved full-emblem PNG over the generated cat (P3: every
+// General Tso depiction is the supplied artwork). The emblem is never cropped; an opaque ground sits behind it.
+function heroPhoto(root) {
+  const dir = REVIEW ? REVIEW_IMG : PHOTO_DIR;
+  const v = (id, w, half) => `${dir}${id}-${half}.jpg ${half}w, ${dir}${id}-${w}.jpg ${w}w`;
   return `<section class="hero hero-concept" data-focus="HERO">
   <div class="hc-media">
     <picture>
       <source media="(orientation: portrait) and (max-width: 899px)" srcset="${v('HERO-P-01', 1108, 554)}" sizes="100vw">
       <source media="(max-width: 1023px)" srcset="${v('HERO-L-01', 1688, 844)}" sizes="100vw">
-      <img class="hc-photo" src="${REVIEW_IMG}HERO-D-01-1866.jpg" srcset="${v('HERO-D-01', 1866, 933)}" sizes="100vw" alt="" fetchpriority="high">
+      <img class="hc-photo" src="${dir}HERO-D-01-1866.jpg" srcset="${v('HERO-D-01', 1866, 933)}" sizes="100vw" alt="" fetchpriority="high">
     </picture>
     <div class="hc-emblem">${emblem(root, '(orientation: portrait) and (max-width: 899px) 70vw, 34vw', 'emblem', true)}</div>
-    <span class="slot-id hc-label"><span class="hc-d">HERO-D-01</span><span class="hc-l">HERO-L-01</span><span class="hc-p">HERO-P-01</span> · CONCEPT + approved emblem</span>
-  </div>
+    ${REVIEW ? `<span class="slot-id hc-label"><span class="hc-d">HERO-D-01</span><span class="hc-l">HERO-L-01</span><span class="hc-p">HERO-P-01</span> · CONCEPT + approved emblem</span>\n` : ''}  </div>
   <div class="wrap hc-copy">
     <p class="eyebrow">TSO BATH &amp; BODY · FORT WAYNE, INDIANA</p>
     <h1 class="display">Soak Well.<br>Live Boldly.</h1>
@@ -950,23 +950,14 @@ function heroConcept(root) {
 `;
 }
 
-const CONCEPTS = {
-  'COL-F-01': { file: 'COL-F-01', w: 1448, half: 724 },
-  'COL-B-01': { file: 'COL-B-01', w: 1448, half: 724 },
-  'DEMO-01': { file: 'DEMO-01', w: 1448, half: 724 },
-  'PRD-01': { file: 'PRD-01-A', w: 1254, half: 627 },
-  'PRD-02': { file: 'PRD-02-A', w: 1254, half: 627 },
-  'PRD-03': { file: 'PRD-03-A', w: 1254, half: 627 },
-  'PRD-04': { file: 'PRD-04-A', w: 1254, half: 627 },
-};
-CONCEPT = CONCEPTS;
+REVIEW = true;
 const FRAMES = {
   'home': ['', home()],
   'collections-fortune': ['collections/fortune/', collectionPage('fortune')],
   'collections-barracks': ['collections/barracks/', collectionPage('barracks')],
   ...Object.fromEntries(PRODUCTS.map((p) => [`product-${p.slug}`, [`products/${p.slug}/`, productPage(p)]])),
 };
-CONCEPT = null;
+REVIEW = false;
 const FRAME_HEAD = (orig) => `<base href="${PAGES_BASE}${orig}">
 <link rel="stylesheet" href="${PAGES_BASE}image-review/frame.css?v=${REVIEW_V}">
 <script>addEventListener('load',()=>{const f=new URLSearchParams(location.search).get('focus');const el=f&&f!=='HERO'&&document.querySelector('[data-focus="'+f+'"]');if(el)el.scrollIntoView({block:'center'});});</script>

@@ -30,7 +30,7 @@ General Tso (P1-12, P3 16) is on every page: launcher bottom-right, the **TSO** 
 ## Preview-only behaviour
 
 - **Prices** show `$—.—` and net weight `— oz` exactly as in P3: no prices have been approved.
-- **Imagery**: no product photography exists yet. Every photo position is the P3 striped placeholder labelled with its slot ID from `05_manifests/image_slot_manifest.json` (PRD-01…04, COL-F-01, DEMO-01…03, STORY-01, …). The brand artwork shown is the three approved PNGs only.
+- **Imagery**: ten owner-approved images (2026-10-15) are installed from `assets/photos/`: home hero (HERO-D/P/L-01), collection cards (COL-F/B-01), the reveal's first step (DEMO-01) and each product's main image (PRD-01…04). They are approved concept images, not final product photography; the cat badges printed on their packaging are provisional concept art, not a replacement for the logo. In the hero, the approved full-emblem PNG sits over the generated cat on an opaque ground. Every other photo position keeps the P3 striped placeholder labelled with its slot ID. The approval record is `image-review/` (https://squidbay.github.io/tso-bath-body-preview/image-review/).
 - **Bag** lives in this browser's `localStorage`. Inventory states are demonstration states from P3 page 12 (in stock / low stock · 3 left / out of stock).
 - **Checkout** validates and then opens a "Stripe step" dialog. No payment is taken; the dialog lets the reviewer choose a successful or declined outcome to see both states.
 - **Forms** (email opt-in, contact, back-in-stock) validate and then say plainly that nothing was sent or stored.

@@ -40,3 +40,17 @@ Self-hosted WOFF2 (latin subset) from Fontsource 5.3.0, SIL Open Font License 1.
 
 - `og.png` — OG-01 share card (1200×630) rendered from `tools/og/card.html` using only the approved PNGs, P2 colors and P3 copy.
 - `manifest.webmanifest` — per P3 INSTALL notes (any + maskable 192/512, theme and background `#071719`).
+
+## Owner-approved photography (2026-10-15)
+
+`assets/photos/` — JPEG q82 at the generated size and a half-size copy, made with `sips` from the PNGs in `Tso_Bath_Body_Website_Image_Concepts_2026-10-15.zip` (zip sha256 `bff305beb0eda558…`; per-image sha256 in `image-review/`). HERO-L-01 was downsized from 1869 to its 1688 px target; nothing was cropped, recolored or filtered.
+
+| Slot | File | Generated | P3 target |
+|---|---|---|---|
+| HERO-D-01 | HERO-D-01-1866.jpg / -933 | 1866×843 | 2880×1300 |
+| HERO-P-01 | HERO-P-01-1108.jpg / -554 | 1108×1420 | 1170×1500 |
+| HERO-L-01 | HERO-L-01-1688.jpg / -844 | 1869×842 | 1688×760 |
+| COL-F-01, COL-B-01, DEMO-01 | *-1448.jpg / -724 | 1448×1086 | 1600×1200 |
+| PRD-01…04 (main) | PRD-0N-A-1254.jpg / -627 | 1254×1254 | 2000×2000 |
+
+Still outstanding: GIFT-01-F, GIFT-01-B, DEMO-02, DEMO-03, product angles B–E, SRC-01…03, SOAP-01, STORY-01.

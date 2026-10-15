@@ -477,4 +477,34 @@ body.locked{overflow:hidden}
   .chat-head{padding-block:6px}.cat-chat-head{width:40px;height:40px}
 }
 
+/* ---------- owner-approved photos (2026-10-15) ---------- */
+.slot-photo{position:relative;background:var(--tso-bg-2)}
+.slot-photo>img,.slot-concept>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.bag-line .slot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+/* home hero: approved photo + approved emblem over the generated cat (emblem never cropped) */
+.hero-concept{position:relative;overflow:hidden;border-bottom:1px solid var(--tso-border)}
+.hc-media{position:relative;aspect-ratio:1866/843;--ex:51%;--ey:4%;--ew:33%}
+.hc-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.hc-media::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,23,25,.92) 0%,rgba(7,23,25,.78) 30%,rgba(7,23,25,0) 50%);pointer-events:none}
+.hc-emblem{position:absolute;z-index:1;left:var(--ex);top:var(--ey);width:var(--ew);aspect-ratio:1}
+.hc-emblem::before{content:"";position:absolute;inset:-20%;border-radius:50%;background:radial-gradient(closest-side,rgb(7,23,25) 82%,rgba(7,23,25,.8) 92%,rgba(7,23,25,0) 100%)}
+.hc-emblem img{position:relative;width:100%;height:100%;object-fit:contain}
+.hc-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
+.hc-copy>*{max-width:min(40%,560px)}
+.hc-copy .lead{max-width:min(40%,560px)}
+
+/* phone + tablet landscape below 1024: HERO-L-01, copy below the photo (the cat sits where copy would go) */
+@media (max-width:1023px){
+  .hc-media{aspect-ratio:1688/760;--ex:28%;--ey:4%;--ew:38%}
+  .hc-media::after{display:none}
+  .hc-copy{position:static;padding-block:32px 48px}
+  .hc-copy>*,.hc-copy .lead{max-width:62ch}
+}
+/* portrait phones and tablets: HERO-P-01, cat centred, copy below (P3 HERO-P-01) */
+@media (orientation:portrait) and (max-width:899px){
+  .hc-media{aspect-ratio:1108/1420;--ex:15%;--ey:4%;--ew:66%}
+  .hc-copy{align-items:center;text-align:center}
+  .hc-copy .btn-row{justify-content:center}
+}
+
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
