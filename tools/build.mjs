@@ -89,7 +89,7 @@ const slot = (id, ratio, label, extra = '') => `<div class="slot" style="aspect-
 // Image review only (image-review/): when CONCEPT is set, slots that have a concept image render it,
 // labelled CONCEPT. The storefront build never sets CONCEPT, so its output is unchanged.
 let CONCEPT = null;
-const REVIEW_V = 'r3'; // cache key for image-review/ styles only
+const REVIEW_V = 'r4'; // cache key for image-review/ styles only
 const REVIEW_IMG = PAGES_BASE + 'image-review/img/';
 const _slot = slot;
 const slotOrConcept = (id, ratio, label, extra = '') => {
@@ -1042,8 +1042,9 @@ ${RS.map((r, i) => `<section class="rv-slot" id="s${i}">
 </section>`).join('\n')}
 <section class="rv-slot" id="devices">
   <h2>Device captures</h2>
-  <p>Screenshots from the iOS Simulator (iPhone 17, Safari) and the Android emulator (Chrome 113, Android 14), portrait and landscape, of the review frames above.</p>
-  <div class="rv-captures" data-captures></div>
+  <p>Real screenshots from the iOS Simulator (iPhone 17, iOS 26.5, Safari) and the Android emulator (Android 14, Chrome 113), portrait and landscape, of the review frames above — 28 captures, taken from the live URL on 2026-10-15.</p>
+  ${[['hero', 'Home hero'], ['collections', 'Collection cards'], ['demo', 'Reveal · DEMO-01'], ['prd-01', 'Fortune Cookie Bath Bomb™'], ['prd-02', 'Wonton’ in the Tub™'], ['prd-03', 'The Exploding Dumpling™'], ['prd-04', 'Nine Lives Musk™']].map(([k, t]) => `<h3 class="rv-cap-h">${t}</h3>
+  <div class="rv-captures">${[['ios', 'portrait', 'iOS Safari · portrait'], ['ios', 'landscape', 'iOS Safari · landscape'], ['android', 'portrait', 'Android Chrome · portrait'], ['android', 'landscape', 'Android Chrome · landscape']].map(([d, o, l]) => `<figure><a href="captures/${d}-${o}-${k}.jpg"><img src="captures/${d}-${o}-${k}.jpg" alt="${t} — ${l}" loading="lazy"></a><figcaption>${l}</figcaption></figure>`).join('')}</div>`).join('\n  ')}
 </section>
 </main>
 <script>

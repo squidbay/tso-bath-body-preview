@@ -30,3 +30,4 @@
 .rv-captures figure{margin:0}.rv-captures img{width:100%;height:auto;border:1px solid var(--tso-border)}
 .rv-captures figcaption{font-size:13px;margin-top:6px}
 .rv-table{overflow-x:auto;margin:0 0 20px;max-width:760px}.rv-table .rv-meta{margin:0;min-width:520px}
+.rv-cap-h{font-size:var(--tso-h3);margin:32px 0 12px}.rv-captures{align-items:start}
