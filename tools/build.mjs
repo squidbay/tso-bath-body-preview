@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '8';
+const ASSET_V = '9';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -97,19 +97,19 @@ const PHOTOS = {
   'PRD-02': { file: 'PRD-02-A', w: 1254, half: 627 },
   'PRD-03': { file: 'PRD-03-A', w: 1254, half: 627 },
   'PRD-04': { file: 'PRD-04-A', w: 1254, half: 627 },
-};
-const PHOTO_DIR = PAGES_BASE + 'assets/photos/';
-// Batch 2 (2026-10-15): awaiting owner approval. Rendered ONLY in the image-review build, never the storefront.
-const PENDING = {
+  // Batch 2, owner-approved 2026-10-15. DEMO-03 is the Fortune slip only; the Barracks dispatch stays review-only.
   'DEMO-02': { file: 'DEMO-02', w: 1600, half: 800 },
   'DEMO-03': { file: 'DEMO-03', w: 1600, half: 800 },
   'GIFT-01-F': { file: 'GIFT-01-F', w: 1600, half: 800 },
   'GIFT-01-B': { file: 'GIFT-01-B', w: 1600, half: 800 },
   'GIFT-02': { file: 'GIFT-02', w: 1600, half: 800 },
 };
+const PHOTO_DIR = PAGES_BASE + 'assets/photos/';
+// Images awaiting owner approval (rendered only in the image-review build). Empty: everything shown is approved.
+const PENDING = {};
 // Image review record (image-review/): REVIEW=true renders the same images labelled CONCEPT.
 let REVIEW = false;
-const REVIEW_V = 'r6'; // cache key for image-review/ styles only
+const REVIEW_V = 'r7'; // cache key for image-review/ styles only
 const REVIEW_IMG = PAGES_BASE + 'image-review/img/';
 const _slot = slot;
 const slotOrConcept = (id, ratio, label, extra = '') => {
@@ -1035,18 +1035,18 @@ const reviewPage = `<!doctype html>
 <header class="rv-head"><div class="wrap">
   <p class="eyebrow">Owner review · not the storefront</p>
   <h1>Website image concepts</h1>
-  <p class="lead">Concept images shown inside their real slots on the storefront templates at desktop, iOS and Android sizes. <strong>Batch 1</strong> (ten slots) was approved and installed on 2026-10-15. <strong>Batch 2</strong> (reveal steps and gift sets) is pending: nothing from it is on the live storefront.</p>
+  <p class="lead">Concept images shown inside their real slots on the storefront templates at desktop, iOS and Android sizes. <strong>Batch 1</strong> (ten slots) was approved and installed on 2026-10-15. <strong>Batch 2</strong> (reveal steps and gift sets) was approved and installed the same day.</p>
   <ul class="rv-rules">
     <li><strong>Identity:</strong> the approved General Tso PNG remains the authority. Heroes use the approved emblem in place of the generated cat.</li>
     <li><strong>Packaging:</strong> the cat badges printed on generated boxes are provisional concept imagery, not an approved replacement for the logo.</li>
     <li><strong>Not included:</strong> product angles B–E, SRC/SOAP/STORY slots — they stay placeholders.</li>
-    <li>Gold labels mark every concept image inside the frames: <span class="rv-chip">APPROVED</span> (batch 1) or <span class="rv-chip">PENDING APPROVAL</span> (batch 2).</li>
+    <li>Gold labels mark every concept image inside the frames: <span class="rv-chip">APPROVED</span> on every installed image; anything still awaiting a decision is labelled <span class="rv-chip">PENDING APPROVAL</span>.</li>
   </ul>
   <nav class="rv-toc" aria-label="Slots">${RS.map((r, i) => `<a href="#s${i}">${r.batch === 2 ? '★ ' : ''}${r.ids.join(' · ')}</a>`).join('')}<a href="#devices">Device captures</a></nav>
 </div></header>
 <main class="wrap">
 ${RS.map((r, i) => `<section class="rv-slot" id="s${i}">
-  <p class="eyebrow">${r.batch === 2 ? 'Batch 2 · pending owner approval' : 'Batch 1 · approved 2026-10-15 · installed'}</p>
+  <p class="eyebrow">${r.batch === 2 ? 'Batch 2 · approved 2026-10-15 · installed' : 'Batch 1 · approved 2026-10-15 · installed'}</p>
   <h2>${r.title}</h2>
   <div class="rv-table" tabindex="0" role="region" aria-label="Slot details"><table class="rv-meta"><thead><tr><th>Slot</th><th>Generated</th><th>Target</th><th>sha256</th><th>As generated</th></tr></thead><tbody>
   ${r.files.map(([id, g, t, h]) => `<tr><td>${id}</td><td>${g}</td><td>${t}</td><td><code>${h}…</code></td><td><a class="link" href="img/${id}-${fullOf(id)}.jpg">open</a></td></tr>`).join('')}
@@ -1056,7 +1056,7 @@ ${RS.map((r, i) => `<section class="rv-slot" id="s${i}">
   <div class="rv-devices">
   ${DEVICES.map(([label, w, h]) => `<figure class="rv-device" style="--w:${w};--h:${h}"><figcaption>${label} <span>${w}×${h}</span></figcaption><div class="rv-screen"><iframe src="frames/${r.frame}.html?focus=${r.focus}" width="${w}" height="${h}" loading="lazy" title="${esc(r.title)} — ${label}"></iframe></div></figure>`).join('\n  ')}
   </div>
-  <p class="rv-decision">${r.batch === 2 ? `Decision for ${r.ids.join(', ')}: <strong>approve</strong> · <strong>approve with changes</strong> · <strong>reject</strong>` : `Owner approved ${r.ids.join(', ')} on 2026-10-15; live on the storefront.`}</p>
+  <p class="rv-decision">Owner approved ${r.ids.join(', ')} on 2026-10-15; live on the storefront.${r.ids.includes('DEMO-03') ? ' DEMO-03-B (Barracks dispatch) stays in this gallery only.' : ''}</p>
 </section>`).join('\n')}
 <section class="rv-slot" id="devices">
   <h2>Device captures</h2>

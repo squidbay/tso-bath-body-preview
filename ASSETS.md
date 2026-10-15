@@ -53,4 +53,8 @@ Self-hosted WOFF2 (latin subset) from Fontsource 5.3.0, SIL Open Font License 1.
 | COL-F-01, COL-B-01, DEMO-01 | *-1448.jpg / -724 | 1448×1086 | 1600×1200 |
 | PRD-01…04 (main) | PRD-0N-A-1254.jpg / -627 | 1254×1254 | 2000×2000 |
 
-Still outstanding: GIFT-01-F, GIFT-01-B, DEMO-02, DEMO-03, product angles B–E, SRC-01…03, SOAP-01, STORY-01.
+### Batch 2 (approved 2026-10-15)
+
+From `Tso_Bath_Body_New_Images_Claude_Code_Handoff_2026-10-15.zip` (zip sha256 `c1acf87bb2fcaeed…`), 1600×1200 JPEGs used byte-for-byte plus an 800 px copy. **The ZIP's gift files were swapped and are mapped by content:** `GIFT-02-Gift-Presentation.jpg` (sha256 `1750b2e7…`, the Fortune 6 + 6 box) → GIFT-01-F; `GIFT-01-F-Fortune-6-Bombs-6-Soaps.jpg` (`c4bb05ee…`, the presentation box) → GIFT-02. DEMO-02 `5494b465…`, DEMO-03 Fortune slip `7258385a…`, GIFT-01-B `375dfcf8…`. The Barracks dispatch (`0e82e304…`) is in `image-review/` only. Printed packaging copy in these renders (®, gendered labels, taglines) is provisional concept art, not approved site copy.
+
+Still outstanding: product angles B–E, SRC-01…03, SOAP-01, STORY-01.
