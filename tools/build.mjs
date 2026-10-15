@@ -1060,8 +1060,8 @@ ${RS.map((r, i) => `<section class="rv-slot" id="s${i}">
 </section>`).join('\n')}
 <section class="rv-slot" id="devices">
   <h2>Device captures</h2>
-  <p>Real screenshots from the iOS Simulator (iPhone 17, iOS 26.5, Safari) and the Android emulator (Android 14, Chrome 113), portrait and landscape, of the review frames above — 28 captures, taken from the live URL on 2026-10-15.</p>
-  ${[['hero', 'Home hero'], ['collections', 'Collection cards'], ['demo', 'Reveal · DEMO-01'], ['prd-01', 'Fortune Cookie Bath Bomb™'], ['prd-02', 'Wonton’ in the Tub™'], ['prd-03', 'The Exploding Dumpling™'], ['prd-04', 'Nine Lives Musk™']].map(([k, t]) => `<h3 class="rv-cap-h">${t}</h3>
+  <p>Real screenshots from the iOS Simulator (iPhone 17, iOS 26.5, Safari) and the Android emulator (Android 14, Chrome 113), portrait and landscape, of the review frames above — 28 batch-1 and 12 batch-2 captures, taken from the live URL on 2026-10-15.</p>
+  ${[['hero', 'Home hero'], ['collections', 'Collection cards'], ['demo', 'Reveal · DEMO-01'], ['prd-01', 'Fortune Cookie Bath Bomb™'], ['prd-02', 'Wonton’ in the Tub™'], ['prd-03', 'The Exploding Dumpling™'], ['prd-04', 'Nine Lives Musk™'], ['demo2', 'Batch 2 · Reveal steps (DEMO-02, DEMO-03 Fortune)'], ['gifts', 'Batch 2 · Gift sets (GIFT-01-F, GIFT-01-B)'], ['gift-02', 'Batch 2 · Gift presentation (GIFT-02)']].map(([k, t]) => `<h3 class="rv-cap-h">${t}</h3>
   <div class="rv-captures">${[['ios', 'portrait', 'iOS Safari · portrait'], ['ios', 'landscape', 'iOS Safari · landscape'], ['android', 'portrait', 'Android Chrome · portrait'], ['android', 'landscape', 'Android Chrome · landscape']].map(([d, o, l]) => `<figure><a href="captures/${d}-${o}-${k}.jpg"><img src="captures/${d}-${o}-${k}.jpg" alt="${t} — ${l}" loading="lazy"></a><figcaption>${l}</figcaption></figure>`).join('')}</div>`).join('\n  ')}
 </section>
 </main>
