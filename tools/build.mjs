@@ -89,6 +89,7 @@ const slot = (id, ratio, label, extra = '') => `<div class="slot" style="aspect-
 // Image review only (image-review/): when CONCEPT is set, slots that have a concept image render it,
 // labelled CONCEPT. The storefront build never sets CONCEPT, so its output is unchanged.
 let CONCEPT = null;
+const REVIEW_V = 'r3'; // cache key for image-review/ styles only
 const REVIEW_IMG = PAGES_BASE + 'image-review/img/';
 const _slot = slot;
 const slotOrConcept = (id, ratio, label, extra = '') => {
@@ -967,7 +968,7 @@ const FRAMES = {
 };
 CONCEPT = null;
 const FRAME_HEAD = (orig) => `<base href="${PAGES_BASE}${orig}">
-<link rel="stylesheet" href="${PAGES_BASE}image-review/frame.css?v=${ASSET_V}">
+<link rel="stylesheet" href="${PAGES_BASE}image-review/frame.css?v=${REVIEW_V}">
 <script>addEventListener('load',()=>{const f=new URLSearchParams(location.search).get('focus');const el=f&&f!=='HERO'&&document.querySelector('[data-focus="'+f+'"]');if(el)el.scrollIntoView({block:'center'});});</script>
 `;
 for (const [name, [orig, html]] of Object.entries(FRAMES)) {
@@ -1011,7 +1012,7 @@ const reviewPage = `<!doctype html>
 <meta name="theme-color" content="#071719">
 <link rel="icon" type="image/svg+xml" href="../favicon.svg?v=${ASSET_V}">
 <link rel="stylesheet" href="../assets/css/site.css?v=${ASSET_V}">
-<link rel="stylesheet" href="review.css?v=${ASSET_V}">
+<link rel="stylesheet" href="review.css?v=${REVIEW_V}">
 </head>
 <body class="review">
 <header class="rv-head"><div class="wrap">
