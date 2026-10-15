@@ -1,0 +1,33 @@
+PASS android-landscape / (915×308)
+PASS android-landscape /shop/ (915×308)
+PASS android-landscape /bath-bombs/ (915×308)
+PASS android-landscape /soaps/ (915×308)
+PASS android-landscape /collections/ (915×308)
+PASS android-landscape /collections/fortune/ (915×308)
+PASS android-landscape /collections/barracks/ (915×308)
+PASS android-landscape /gift-sets/ (915×308)
+PASS android-landscape /products/fortune-cookie-bath-bomb/ (915×308)
+PASS android-landscape /products/wonton-in-the-tub/ (915×308)
+PASS android-landscape /products/the-exploding-dumpling/ (915×308)
+PASS android-landscape /products/nine-lives-musk/ (915×308)
+PASS android-landscape /our-story/ (915×308)
+PASS android-landscape /help/ (915×308)
+PASS android-landscape /bag/ (915×308)
+PASS android-landscape /checkout/ (915×308)
+PASS android-landscape /order-confirmed/ (915×308)
+PASS android-landscape /search/ (915×308)
+PASS android-landscape /search/?q=lavender (915×308)
+PASS android-landscape /privacy/ (915×308)
+PASS android-landscape /terms/ (915×308)
+PASS android-landscape /accessibility/ (915×308)
+PASS android-landscape /collections/nothing-here/ (915×308)
+PASS android-landscape pdp stepper capped at 3
+PASS android-landscape toast fully on screen — {"x":336.9821472167969,"y":170.6666717529297,"width":241.08334350585938,"height":49.5238037109375}
+PASS android-landscape bag chip = 3
+PASS android-landscape chat 60% right sheet — {"x":366.0238037109375,"y":0,"width":549.0238037109375,"height":308.19049072265625}
+PASS android-landscape chat does not pop keyboard (input not focused)
+PASS android-landscape chat answers with Fortune suggestions
+PASS android-landscape drawer opens
+PASS android-landscape drawer closes
+PASS android-landscape no page errors
+android-landscape: 32/32 PASS

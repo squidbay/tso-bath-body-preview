@@ -1,0 +1,41 @@
+[
+  {
+    "name": "android-portrait-flows pdp stepper capped at 3",
+    "ok": true
+  },
+  {
+    "name": "android-portrait-flows toast fully on screen",
+    "ok": true,
+    "detail": "{\"x\":85.55357360839844,\"y\":673.5238037109375,\"width\":241.0833282470703,\"height\":49.5238037109375}"
+  },
+  {
+    "name": "android-portrait-flows bag chip = 3",
+    "ok": true
+  },
+  {
+    "name": "android-portrait-flows chat full sheet",
+    "ok": true,
+    "detail": "{\"x\":0,\"y\":0,\"width\":412.19049072265625,\"height\":811.047607421875}"
+  },
+  {
+    "name": "android-portrait-flows chat does not pop keyboard (input not focused)",
+    "ok": true
+  },
+  {
+    "name": "android-portrait-flows chat answers with Fortune suggestions",
+    "ok": true
+  },
+  {
+    "name": "android-portrait-flows drawer opens",
+    "ok": true
+  },
+  {
+    "name": "android-portrait-flows drawer closes",
+    "ok": true
+  },
+  {
+    "name": "android-portrait-flows no page errors",
+    "ok": true,
+    "detail": ""
+  }
+]

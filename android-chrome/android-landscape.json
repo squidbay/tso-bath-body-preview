@@ -1,0 +1,156 @@
+[
+  {
+    "name": "android-landscape / (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /shop/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /bath-bombs/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /soaps/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /collections/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /collections/fortune/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /collections/barracks/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /gift-sets/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /products/fortune-cookie-bath-bomb/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /products/wonton-in-the-tub/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /products/the-exploding-dumpling/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /products/nine-lives-musk/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /our-story/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /help/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /bag/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /checkout/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /order-confirmed/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /search/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /search/?q=lavender (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /privacy/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /terms/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /accessibility/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape /collections/nothing-here/ (915×308)",
+    "ok": true,
+    "detail": ""
+  },
+  {
+    "name": "android-landscape pdp stepper capped at 3",
+    "ok": true
+  },
+  {
+    "name": "android-landscape toast fully on screen",
+    "ok": true,
+    "detail": "{\"x\":336.9821472167969,\"y\":170.6666717529297,\"width\":241.08334350585938,\"height\":49.5238037109375}"
+  },
+  {
+    "name": "android-landscape bag chip = 3",
+    "ok": true
+  },
+  {
+    "name": "android-landscape chat 60% right sheet",
+    "ok": true,
+    "detail": "{\"x\":366.0238037109375,\"y\":0,\"width\":549.0238037109375,\"height\":308.19049072265625}"
+  },
+  {
+    "name": "android-landscape chat does not pop keyboard (input not focused)",
+    "ok": true
+  },
+  {
+    "name": "android-landscape chat answers with Fortune suggestions",
+    "ok": true
+  },
+  {
+    "name": "android-landscape drawer opens",
+    "ok": true
+  },
+  {
+    "name": "android-landscape drawer closes",
+    "ok": true
+  },
+  {
+    "name": "android-landscape no page errors",
+    "ok": true,
+    "detail": ""
+  }
+]
