@@ -58,3 +58,8 @@ Self-hosted WOFF2 (latin subset) from Fontsource 5.3.0, SIL Open Font License 1.
 From `Tso_Bath_Body_New_Images_Claude_Code_Handoff_2026-10-15.zip` (zip sha256 `c1acf87bb2fcaeed…`), 1600×1200 JPEGs used byte-for-byte plus an 800 px copy. **The ZIP's gift files were swapped and are mapped by content:** `GIFT-02-Gift-Presentation.jpg` (sha256 `1750b2e7…`, the Fortune 6 + 6 box) → GIFT-01-F; `GIFT-01-F-Fortune-6-Bombs-6-Soaps.jpg` (`c4bb05ee…`, the presentation box) → GIFT-02. DEMO-02 `5494b465…`, DEMO-03 Fortune slip `7258385a…`, GIFT-01-B `375dfcf8…`. The Barracks dispatch (`0e82e304…`) is in `image-review/` only. Printed packaging copy in these renders (®, gendered labels, taglines) is provisional concept art, not approved site copy.
 
 Still outstanding: product angles B–E, SRC-01…03, SOAP-01, STORY-01.
+
+### Changes 2026-10-15 (owner briefs: mobile hero, moodboard hero, Double Happiness Chest)
+
+- **Home hero** no longer uses HERO-D-01 / HERO-P-01 / HERO-L-01. It shows the approved `general-tso-compact-cat.png` (and its WebP derivatives) plus the approved horizontal lockup on desktop, unaltered, on a CSS ground. The three hero photos stay in `assets/photos/` and in `image-review/` as the approval record.
+- **GIFT-03 — The Double Happiness Chest** (24 pieces: the Fortune and Barracks 12-piece sets in one outer chest). Target 1600×1200 (4:3), sRGB JPEG q85. **Photograph pending.** Until it exists, the page shows the approved GIFT-01-F and GIFT-01-B images side by side, labelled `GIFT-03 · chest photograph pending`. Chest dimensions, inserts, weight and price are not final.

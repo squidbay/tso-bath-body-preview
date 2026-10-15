@@ -14,7 +14,7 @@ A static owner-review preview of the proposed tsobathbody.com storefront. This i
 | `shop/` | Shop All with filter chips | P1-03/04 |
 | `bath-bombs/`, `soaps/` | Category listings | P1-03 |
 | `collections/`, `collections/fortune/`, `collections/barracks/` | Collections hub and the two collections | P3 12 |
-| `gift-sets/` | Gift Sets / Bundles (proposed sets) | P3 19 |
+| `gift-sets/` | Gift Sets / Bundles — Fortune and Barracks 12-piece sets plus the featured **Double Happiness Chest** (GIFT-03, 24 pieces, coming soon, no price) | P3 19 |
 | `products/<slug>/` × 4 | Product detail — gallery, stepper, inventory, tallow disclosure, accordions, sticky mobile bar | P1-05, P3 13 |
 | `our-story/` (+ `#general-tso`) | Our Story and Meet General Tso | P3 03 |
 | `help/` (`#ingredients` `#faq` `#shipping` `#contact` `#order`) | Help Hub, light treatment | P1-09/11, P3 17 |
@@ -30,7 +30,7 @@ General Tso (P1-12, P3 16) is on every page: launcher bottom-right, the **TSO** 
 ## Preview-only behaviour
 
 - **Prices** show `$—.—` and net weight `— oz` exactly as in P3: no prices have been approved.
-- **Imagery**: fifteen owner-approved images (2026-10-15, two batches) are installed from `assets/photos/`: home hero (HERO-D/P/L-01), collection cards (COL-F/B-01), all three reveal steps (DEMO-01, DEMO-02, DEMO-03 — Fortune slip only), each product's main image (PRD-01…04), and the gift sets (GIFT-01-F, GIFT-01-B, GIFT-02). They are approved concept images, not final product photography; the cat badges printed on their packaging are provisional concept art, not a replacement for the logo. In the hero, the approved full-emblem PNG sits over the generated cat inside a soft dark falloff (no hard ring). Every other photo position keeps the P3 striped placeholder labelled with its slot ID. The approval record is `image-review/` (https://squidbay.github.io/tso-bath-body-preview/image-review/).
+- **Imagery**: fifteen owner-approved images (2026-10-15, two batches) are installed from `assets/photos/`: collection cards (COL-F/B-01), all three reveal steps (DEMO-01, DEMO-02, DEMO-03 — Fortune slip only), each product's main image (PRD-01…04), and the gift sets (GIFT-01-F, GIFT-01-B, GIFT-02). They are approved concept images, not final product photography; the cat badges printed on their packaging are provisional concept art, not a replacement for the logo. The home hero follows the brand moodboard's website preview (owner, 2026-10-15): the approved compact-cat PNG on a clean Midnight Jade ground — cat left, horizontal lockup + headline + shop buttons right on desktop; compact cat-led layouts on phones. No hero photograph is used, so no generated mascot needs masking. Every other photo position keeps the P3 striped placeholder labelled with its slot ID. The approval record is `image-review/` (https://squidbay.github.io/tso-bath-body-preview/image-review/).
 - **Bag** lives in this browser's `localStorage`. Inventory states are demonstration states from P3 page 12 (in stock / low stock · 3 left / out of stock).
 - **Checkout** validates and then opens a "Stripe step" dialog. No payment is taken; the dialog lets the reviewer choose a successful or declined outcome to see both states.
 - **Forms** (email opt-in, contact, back-in-stock) validate and then say plainly that nothing was sent or stored.

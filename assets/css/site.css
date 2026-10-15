@@ -483,32 +483,69 @@ body.locked{overflow:hidden}
 .slot-photo{position:relative;background:var(--tso-bg-2)}
 .slot-photo>img,.slot-concept>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .bag-line .slot>img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-/* home hero: approved photo + approved emblem over the generated cat (emblem never cropped) */
-.hero-concept{position:relative;overflow:hidden;border-bottom:1px solid var(--tso-border)}
-.hc-media{position:relative;aspect-ratio:1866/843;--ex:51%;--ey:4%;--ew:33%}
-.hc-photo{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.hc-media::after{content:"";position:absolute;inset:0;z-index:1;background:linear-gradient(90deg,rgba(7,23,25,.92) 0%,rgba(7,23,25,.78) 30%,rgba(7,23,25,0) 50%);pointer-events:none}
-.hc-emblem{position:absolute;z-index:1;left:var(--ex);top:var(--ey);width:var(--ew);aspect-ratio:1}
-.hc-emblem::before{content:"";position:absolute;inset:-45%;border-radius:50%;background:radial-gradient(closest-side,rgba(7,23,25,.97) 45%,rgba(7,23,25,.9) 54%,rgba(7,23,25,.66) 64%,rgba(7,23,25,.36) 76%,rgba(7,23,25,.12) 88%,rgba(7,23,25,0) 100%)}
-.hc-emblem img{position:relative;z-index:1;width:100%;height:100%;object-fit:contain}
-/* soft patch over the generated cat's right ear, which sits just outside the emblem's silhouette */
-.hc-emblem::after{content:"";position:absolute;z-index:0;left:68%;top:-6%;width:36%;aspect-ratio:1;border-radius:50%;background:radial-gradient(closest-side,rgba(7,23,25,.96) 45%,rgba(7,23,25,.7) 68%,rgba(7,23,25,0) 100%)}
-.hc-copy{position:absolute;inset:0;z-index:2;display:flex;flex-direction:column;justify-content:center;align-items:flex-start}
-.hc-copy>*{max-width:min(40%,560px)}
-.hc-copy .lead{max-width:min(40%,560px)}
-
-/* phone + tablet landscape below 1024: HERO-L-01, copy below the photo (the cat sits where copy would go) */
+/* home hero — moodboard composition: approved compact cat + branding on a clean Midnight Jade ground.
+   Gold glow behind the cat and the P3 wave ornament along the foot; no photo, no masking, no filters. */
+.hero-brand{position:relative;overflow:hidden;border-bottom:1px solid var(--tso-border);
+  background:radial-gradient(ellipse 46% 70% at 27% 52%,rgba(212,180,106,.16),rgba(212,180,106,0) 70%),
+    radial-gradient(ellipse 60% 90% at 80% 10%,rgba(18,61,58,.9),rgba(18,61,58,0) 70%),
+    linear-gradient(180deg,var(--tso-bg) 0%,var(--tso-bg-2) 100%)}
+.hero-brand::after{content:"";position:absolute;left:0;right:0;bottom:10px;height:24px;opacity:.55;pointer-events:none;
+  background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 120 24' fill='none' stroke='%238F7238' stroke-width='1.5'%3E%3Cpath d='M0 18c10-14 20-14 30 0s20 14 30 0 20-14 30 0 20 14 30 0'/%3E%3C/svg%3E") repeat-x center/120px 24px}
+.hb-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gutter);align-items:center;padding-block:56px 72px}
+.hb-art{display:flex;justify-content:center}
+.hb-cat{width:min(100%,440px);height:auto;aspect-ratio:1;object-fit:contain}
+.hb-copy{min-width:0}
+.hb-logo{display:block;width:min(100%,420px);height:auto;aspect-ratio:3;object-fit:contain;margin:0 0 24px -6px}
+.hb-copy .lead{max-width:40ch}
+/* below desktop the header already carries the brand; keep the hero compact and cat-led */
 @media (max-width:1023px){
-  .hc-media{aspect-ratio:1688/760;--ex:28%;--ey:4%;--ew:38%}
-  .hc-media::after{display:none}
-  .hc-copy{position:static;padding-block:32px 48px}
-  .hc-copy>*,.hc-copy .lead{max-width:62ch}
+  .hb-logo{display:none}
+  .hb-grid{padding-block:24px 48px}
 }
-/* portrait phones and tablets: HERO-P-01, cat centred, copy below (P3 HERO-P-01) */
-@media (orientation:portrait) and (max-width:899px){
-  .hc-media{aspect-ratio:1108/1420;--ex:15%;--ey:4%;--ew:66%}
-  .hc-copy{align-items:center;text-align:center}
-  .hc-copy .btn-row{justify-content:center}
+@media (orientation:portrait) and (max-width:1023px){
+  .hero-brand{background:radial-gradient(ellipse 70% 38% at 50% 22%,rgba(212,180,106,.16),rgba(212,180,106,0) 70%),linear-gradient(180deg,var(--tso-bg) 0%,var(--tso-bg-2) 100%)}
+  .hb-grid{grid-template-columns:1fr;gap:12px;text-align:center}
+  .hb-cat{width:min(46vw,190px)}
+  .hb-copy .lead{margin-inline:auto}
+  .hb-copy .btn-row{justify-content:center;margin-top:20px}
 }
+@media (orientation:landscape) and (max-width:1023px){
+  .hb-grid{grid-template-columns:auto minmax(0,1fr);gap:28px;padding-block:16px 36px;min-height:min(420px,calc(100svh - var(--hdr) - env(safe-area-inset-top)))}
+  .hb-cat{width:min(220px,calc(100svh - var(--hdr) - 80px));min-width:120px}
+  .hb-copy .eyebrow{margin-bottom:6px}
+  .hb-copy .display{font-size:clamp(30px,10svh,44px);margin-bottom:8px}
+  .hb-copy .lead{margin-bottom:0}
+  .hb-copy .btn-row{margin-top:14px}
+  .hero-brand::after{bottom:4px;opacity:.4}
+}
+
+/* ---------- GIFT-03 · The Double Happiness Chest ---------- */
+.chest{margin-top:var(--tso-space-7);display:grid;grid-template-columns:1fr;background:var(--tso-bg);border:1px solid var(--tso-gold-rule);border-radius:var(--tso-radius-md);box-shadow:inset 0 0 0 4px var(--tso-bg),inset 0 0 0 5px var(--tso-border);overflow:hidden;position:relative}
+.chest::before{content:"";position:absolute;left:0;right:0;top:0;height:4px;z-index:2;background:linear-gradient(90deg,var(--tso-fortune-blossom) 0 50%,var(--tso-barracks-olive) 50% 100%)}
+.chest-media{position:relative;display:grid;grid-template-columns:1fr 1fr;background:var(--tso-bg-2)}
+.chest-half{position:relative;aspect-ratio:4/3;overflow:hidden}
+.chest-half img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.chest-half+.chest-half{border-left:2px solid var(--tso-gold)}
+.chest-seal{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:64px;height:64px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--tso-bg);border:2px solid var(--tso-gold);color:var(--tso-gold);font-size:32px;line-height:1;box-shadow:0 0 0 4px var(--tso-bg)}
+.chest-slot{position:absolute;left:10px;bottom:10px;margin:0;z-index:1}
+.chest-body{padding:32px 40px 40px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);column-gap:48px;align-items:start}
+.chest-intro,.chest-details{display:flex;flex-direction:column;min-width:0}
+.chest-title{font-size:var(--tso-h2);margin-bottom:6px}
+.chest-sub{color:var(--tso-gold-text);font-weight:600;letter-spacing:.08em;margin-bottom:12px}
+.chest-tag{font-family:var(--tso-font-display);font-style:italic;font-weight:500;font-size:var(--tso-h3);color:var(--tso-headline);line-height:1.2;margin-bottom:12px}
+.chest-contents{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:8px 0 16px}
+.chest-contents>div{padding:12px 14px;background:var(--tso-surface);border-radius:var(--tso-radius-sm)}
+.chest-contents ul{list-style:none;margin:0;padding:0;font-size:15px;line-height:1.45}
+.chest-contents li+li{margin-top:6px}
+.chest-contents b{color:var(--tso-headline);font-variant-numeric:tabular-nums}
+.chest-contents .eyebrow{font-size:11px;margin-bottom:8px}
+.chest-count{font-size:14px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--tso-gold-text);margin-bottom:10px}
+.chest-note{font-size:14px;display:flex;gap:6px;align-items:flex-start}
+.chest-note .icon{color:var(--tso-gold);margin-top:3px}
+.chest-body .btn{align-self:flex-start;margin-top:4px}
+@media (max-width:1023px){.chest-body{grid-template-columns:1fr;padding:24px 20px}}
+@media (orientation:portrait) and (max-width:1023px){.chest-half{aspect-ratio:4/5}}
+@media (max-width:479px){.chest-contents{grid-template-columns:1fr}.chest-seal{width:52px;height:52px;font-size:26px}}
+@media (orientation:landscape) and (max-width:1023px){.chest-media{max-height:calc(100svh - var(--hdr) - 24px)}.chest-half{aspect-ratio:auto;height:min(312px,calc(100svh - var(--hdr) - 24px))}}
 
 @media (prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}

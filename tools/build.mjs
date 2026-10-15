@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '9';
+const ASSET_V = '10';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -109,7 +109,7 @@ const PHOTO_DIR = PAGES_BASE + 'assets/photos/';
 const PENDING = {};
 // Image review record (image-review/): REVIEW=true renders the same images labelled CONCEPT.
 let REVIEW = false;
-const REVIEW_V = 'r7'; // cache key for image-review/ styles only
+const REVIEW_V = 'r8'; // cache key for image-review/ styles only
 const REVIEW_IMG = PAGES_BASE + 'image-review/img/';
 const _slot = slot;
 const slotOrConcept = (id, ratio, label, extra = '') => {
@@ -497,6 +497,44 @@ function collectionPage(key) {
     chips: [['all', 'All'], ['bath-bombs', 'Bath Bombs'], ['soaps', 'Soaps']] });
 }
 
+// GIFT-03 — The Double Happiness Chest (owner brief 2026-10-15): both 12-piece sets in one outer chest.
+// No dedicated photograph yet: the two approved gift-set images stand in, split left/right, labelled pending.
+// Coming soon — no price, no Add to Bag, no availability date.
+function doubleHappinessChest() {
+  const half = (id, label) => {
+    const c = PHOTOS[id];
+    return `<div class="chest-half"><img src="${PHOTO_DIR}${c.file}-${c.half}.jpg" srcset="${PHOTO_DIR}${c.file}-${c.half}.jpg ${c.half}w, ${PHOTO_DIR}${c.file}-${c.w}.jpg ${c.w}w" sizes="(min-width: 1280px) 640px, 50vw" alt="${label}" loading="lazy" decoding="async"></div>`;
+  };
+  return `<article class="chest" aria-labelledby="chest-h" data-focus="GIFT-03">
+  <div class="chest-media">
+    ${half('GIFT-01-F', 'Fortune Collection 12-piece gift set')}
+    ${half('GIFT-01-B', 'Barracks Collection 12-piece gift set')}
+    <span class="chest-seal" aria-hidden="true">囍</span>
+    <span class="slot-id chest-slot">GIFT-03 · chest photograph pending</span>
+  </div>
+  <div class="chest-body">
+    <div class="chest-intro">
+    <p class="eyebrow">Featured · Coming soon</p>
+    <h2 id="chest-h" class="chest-title">The Double Happiness Chest</h2>
+    <p class="chest-sub"><span lang="zh-Hans">双喜</span> · Signature Couples Gift Set</p>
+    <p class="chest-tag">Two collections. One legendary gift.</p>
+    <p>A little fortune. A little firepower. One unforgettable gift.</p>
+    <p>Includes our complete Fortune and Barracks gift sets: 12 signature bath bombs and 12 artisan soaps, presented together in one premium gift chest.</p>
+    </div>
+    <div class="chest-details">
+    <div class="chest-contents">
+      <div class="band-fortune"><p class="eyebrow eyebrow-fortune">${icon('blossom-fortune', 'icon icon-motif')}Fortune Collection</p><ul role="list"><li><b>6</b> Fortune Cookie Bath Bombs™</li><li><b>6</b> Wonton’ in the Tub™ soaps</li></ul></div>
+      <div class="band-barracks"><p class="eyebrow eyebrow-barracks">${icon('star-barracks', 'icon icon-motif')}Barracks Collection</p><ul role="list"><li><b>6</b> The Exploding Dumpling™ Bath Bombs</li><li><b>6</b> Nine Lives Musk™ soaps</li></ul></div>
+    </div>
+    <p class="chest-count">24 pieces · 12 bath bombs + 12 soaps</p>
+    <p class="chest-note">${icon('info', 'icon icon-sm')}Soaps contain beef tallow (animal-derived). Perfect for couples, anniversaries, weddings, holidays and special occasions.</p>
+    <p class="price">Price pending</p>
+    <button class="btn btn-secondary" type="button" disabled>Coming soon</button>
+    </div>
+  </div>
+</article>`;
+}
+
 function giftSets() {
   const root = '../';
   const set = (id, col, title) => `<article class="card collection-card band-${col}">
@@ -523,6 +561,7 @@ function giftSets() {
       ${set('GIFT-01-F', 'fortune', 'Fortune gift set')}
       ${set('GIFT-01-B', 'barracks', 'Barracks gift set')}
     </div>
+    ${doubleHappinessChest()}
     <div class="giftband">
       ${slotOrConcept('GIFT-02', '4 / 3', 'Gift presentation and message card', ' style="max-width:360px"')}
       <div>
@@ -932,27 +971,25 @@ for (const [rel, html] of Object.entries(files)) {
 }
 console.log(`wrote ${Object.keys(files).length} files`);
 
-// Home hero: the owner-approved photo with the approved full-emblem PNG over the generated cat (P3: every
-// General Tso depiction is the supplied artwork). The emblem is never cropped; an opaque ground sits behind it.
 function heroPhoto(root) {
-  const dir = REVIEW ? REVIEW_IMG : PHOTO_DIR;
-  const v = (id, w, half) => `${dir}${id}-${half}.jpg ${half}w, ${dir}${id}-${w}.jpg ${w}w`;
-  return `<section class="hero hero-concept" data-focus="HERO">
-  <div class="hc-media">
-    <picture>
-      <source media="(orientation: portrait) and (max-width: 899px)" srcset="${v('HERO-P-01', 1108, 554)}" sizes="100vw">
-      <source media="(max-width: 1023px)" srcset="${v('HERO-L-01', 1688, 844)}" sizes="100vw">
-      <img class="hc-photo" src="${dir}HERO-D-01-1866.jpg" srcset="${v('HERO-D-01', 1866, 933)}" sizes="100vw" alt="" fetchpriority="high">
-    </picture>
-    <div class="hc-emblem">${emblem(root, '(orientation: portrait) and (max-width: 899px) 70vw, 34vw', 'emblem', true)}</div>
-    ${REVIEW ? `<span class="slot-id hc-label"><span class="hc-d">HERO-D-01</span><span class="hc-l">HERO-L-01</span><span class="hc-p">HERO-P-01</span> · CONCEPT + approved emblem</span>\n` : ''}  </div>
-  <div class="wrap hc-copy">
-    <p class="eyebrow">TSO BATH &amp; BODY · FORT WAYNE, INDIANA</p>
-    <h1 class="display">Soak Well.<br>Live Boldly.</h1>
-    <p class="lead">Fizzy surprises. Handmade soaps. Legendary gifts.</p>
-    <div class="btn-row">
-      <a class="btn btn-primary" href="bath-bombs/">Shop Bath Bombs</a>
-      <a class="btn btn-secondary" href="soaps/">Shop Soaps</a>
+  // Moodboard composition (owner, 2026-10-15): the approved compact-cat PNG on a clean P3 ground — no
+  // generated photo, so nothing needs masking. Desktop: cat left, branding + shopping right. Phones:
+  // compact cat-led stack (portrait) or side by side (landscape). Artwork is never cropped or filtered.
+  const b = `${root}assets/brand/`;
+  return `<section class="hero hero-brand" data-focus="HERO">
+  <div class="wrap hb-grid">
+    <div class="hb-art">
+      <img class="hb-cat" src="${b}general-tso-compact-cat.png" srcset="${b}general-tso-compact-cat-256w.webp 256w, ${b}general-tso-compact-cat-512w.webp 512w, ${b}general-tso-compact-cat.png 1254w" sizes="(min-width: 1024px) 440px, (orientation: landscape) 34vh, 180px" alt="General Tso, the Tso Bath &amp; Body cat" width="1254" height="1254" fetchpriority="high">
+    </div>
+    <div class="hb-copy">
+      <img class="hb-logo" src="${b}tso-bath-body-horizontal-logo.png" srcset="${b}tso-bath-body-horizontal-logo-540w.webp 540w, ${b}tso-bath-body-horizontal-logo-720w.webp 720w, ${b}tso-bath-body-horizontal-logo-960w.webp 960w" sizes="420px" alt="" width="2172" height="724">
+      <p class="eyebrow">TSO BATH &amp; BODY · FORT WAYNE, INDIANA</p>
+      <h1 class="display">Soak Well.<br>Live Boldly.</h1>
+      <p class="lead">Fizzy surprises. Handmade soaps. Legendary gifts.</p>
+      <div class="btn-row">
+        <a class="btn btn-primary" href="${root}bath-bombs/">Shop Bath Bombs</a>
+        <a class="btn btn-secondary" href="${root}soaps/">Shop Soaps</a>
+      </div>
     </div>
   </div>
 </section>
@@ -992,7 +1029,8 @@ const halfOf = (id) => ({ 'HERO-D-01': 933, 'HERO-P-01': 554, 'HERO-L-01': 844 }
 const RS = [
   { ids: ['HERO-D-01', 'HERO-P-01', 'HERO-L-01'], title: 'Home hero', frame: 'home', focus: 'HERO',
     files: [['HERO-D-01', '1866×843', '2880×1300', '6c083373797d677c'], ['HERO-P-01', '1108×1420', '1170×1500', '282b8f7b83f0b940'], ['HERO-L-01', '1869×842', '1688×760', 'b2eed7d665273903']],
-    notes: ['Each hero concept draws its own General Tso. Here the approved full-emblem PNG is placed over that cat, uncropped, on a dark ground — the generated cat is not shown as identity.',
+    notes: ['<strong>Superseded 2026-10-15:</strong> the storefront hero now follows the moodboard composition (approved compact cat on a clean ground) and no longer uses these photos. The frames below show the current hero.',
+      'Each hero concept draws its own General Tso. Here the approved full-emblem PNG is placed over that cat, uncropped, on a dark ground — the generated cat is not shown as identity.',
       'Desktop uses HERO-D-01 with the headline over its clear left third. iOS/Android portrait use HERO-P-01 with copy below (P3 HERO-P-01).',
       'Phone landscape uses HERO-L-01, whose cat sits left of centre where the headline would go, so copy is shown below the photo. A HERO-L with a clear left third would let the copy sit over it.',
       'HERO-D-01 is 1866 px wide against a 2880 px target: slightly soft on large retina desktops.'] },
