@@ -46,7 +46,7 @@
 :root{--margin:20px;--gutter:16px;--hdr:56px;--section:48px;--container:1280px}
 @media (min-width:640px){:root{--margin:24px}}
 @media (min-width:1024px){:root{--margin:48px;--gutter:24px;--section:72px}}
-@media (min-width:1180px){:root{--hdr:72px}}
+@media (min-width:1180px),(min-width:600px) and (min-height:500px),(orientation:landscape) and (min-width:600px){:root{--hdr:72px}}
 @media (min-width:1280px){:root{--margin:64px;--gutter:32px;--section:96px}}
 @media (min-width:1440px){:root{--margin:80px}}
 
@@ -127,6 +127,10 @@ em{font-style:italic;font-weight:500}
 .brand{display:flex;align-items:center;text-decoration:none;color:var(--tso-headline);min-height:44px;min-width:0}
 .brand-full{display:none}
 .logo{width:210px;height:70px;object-fit:contain}
+/* Approved horizontal logo wherever it stays legible (tablet, phone landscape, desktop); the compact cat +
+   wordmark is kept only on narrow portrait phones, where the illustrated lockup would fall below P3's 200px
+   minimum (owner recommendation for team review, 2026-10-15). */
+@media (min-width:600px){.brand{flex:none}.brand-full{display:block}.brand-compact{display:none}}
 .brand-compact{display:flex;align-items:center;gap:8px;min-width:0}
 .cat{object-fit:contain}
 .cat-hdr{width:36px;height:36px}
