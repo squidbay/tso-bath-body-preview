@@ -46,7 +46,7 @@
 :root{--margin:20px;--gutter:16px;--hdr:56px;--section:48px;--container:1280px}
 @media (min-width:640px){:root{--margin:24px}}
 @media (min-width:1024px){:root{--margin:48px;--gutter:24px;--section:72px}}
-@media (min-width:1180px),(min-width:600px) and (min-height:500px),(orientation:landscape) and (min-width:600px){:root{--hdr:72px}}
+@media (min-width:1180px){:root{--hdr:72px}}
 @media (min-width:1280px){:root{--margin:64px;--gutter:32px;--section:96px}}
 @media (min-width:1440px){:root{--margin:80px}}
 
@@ -127,10 +127,6 @@ em{font-style:italic;font-weight:500}
 .brand{display:flex;align-items:center;text-decoration:none;color:var(--tso-headline);min-height:44px;min-width:0}
 .brand-full{display:none}
 .logo{width:210px;height:70px;object-fit:contain}
-/* Approved horizontal logo wherever it stays legible (tablet, phone landscape, desktop); the compact cat +
-   wordmark is kept only on narrow portrait phones, where the illustrated lockup would fall below P3's 200px
-   minimum (owner recommendation for team review, 2026-10-15). */
-@media (min-width:600px){.brand{flex:none}.brand-full{display:block}.brand-compact{display:none}}
 .brand-compact{display:flex;align-items:center;gap:8px;min-width:0}
 .cat{object-fit:contain}
 .cat-hdr{width:36px;height:36px}
@@ -153,7 +149,8 @@ em{font-style:italic;font-weight:500}
 @media (max-width:399px){.wordmark{font-size:17px;letter-spacing:0}.cat-hdr{width:32px;height:32px}}
 @media (min-width:1180px){
   .only-compact{display:none}
-  .brand{flex:none}.brand-full{display:block}.brand-compact{display:none}
+  .brand{flex:none}
+  .cat-hdr{width:44px;height:44px}.wordmark{font-size:24px}
   .main-nav{display:block;margin-left:24px}
   .main-nav>ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
   .main-nav li{position:relative;display:flex;align-items:center}
@@ -420,6 +417,8 @@ body.locked{overflow:hidden}
 .site-footer{background:var(--tso-bg);border-top:1px solid var(--tso-border);padding:48px 0 calc(88px + env(safe-area-inset-bottom));color:var(--tso-body);font-size:16px}
 .footer-grid{display:grid;gap:40px}
 .cat-foot{width:48px;height:48px}
+/* the illustrated horizontal logo lives here, large enough for its lettering to read; the header uses the cat mark + wordmark */
+.foot-logo{display:block;width:min(100%,460px);height:auto;aspect-ratio:3;object-fit:contain;margin:0 0 16px -8px}
 .footer-cols{display:grid;grid-template-columns:1fr 1fr;gap:32px 24px}
 .footer-cols ul{list-style:none;margin:0;padding:0}
 .footer-cols li a,.footer-cols li span{display:inline-flex;align-items:center;min-height:44px;min-width:44px;text-decoration:none}

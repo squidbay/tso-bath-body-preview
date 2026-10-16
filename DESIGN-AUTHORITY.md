@@ -15,6 +15,7 @@
 ## Deliberate choices where the authority is internally inconsistent
 
 - **Desktop header logo size.** P3 page 11 says 180×60; P3 page 04 and the README say 220×73 with a 200 px minimum width so "Fort Wayne, Indiana" stays legible. The preview uses **210×70**: it meets the 200 px minimum and fits inside the 72 px header.
+- **Header brand (owner decision 2026-10-15).** The header uses the compact cat + "Tso Bath & Body" wordmark at every width: the illustrated horizontal logo's "Fort Wayne, Indiana" line is unreadable at header size. The horizontal logo is shown large in the footer instead (up to 460px wide).
 - **Desktop header breakpoint.** The full desktop header (logo, five nav items, Search · Help · TSO · Bag) needs ~1130 px. Below **1180 px** the P3 mobile header (Menu · compact cat + wordmark · Bag) is used, so tablets and phone landscape get the mobile header.
 - **Phone header labels.** Under 480 px wide the MENU and BAG text labels are hidden (icons keep 44 px targets and accessible names) so the "TSO BATH & BODY" wordmark never collides with them.
 

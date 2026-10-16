@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '15';
+const ASSET_V = '16';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -239,8 +239,10 @@ function footer(root) {
   return `<footer class="site-footer">
   <div class="wrap footer-grid">
     <div class="footer-brand">
-      ${cat(root, 48, 'cat cat-foot')}
-      <p class="wordmark wordmark-lg">TSO BATH &amp; BODY</p>
+      <picture>
+        <source type="image/webp" srcset="${root}assets/brand/tso-bath-body-horizontal-logo-540w.webp 540w, ${root}assets/brand/tso-bath-body-horizontal-logo-720w.webp 720w, ${root}assets/brand/tso-bath-body-horizontal-logo-960w.webp 960w" sizes="460px">
+        <img class="foot-logo" src="${root}assets/brand/tso-bath-body-horizontal-logo.png" alt="Tso Bath &amp; Body — General Tso’s Meow™ · Fort Wayne, Indiana" width="2172" height="724" loading="lazy" decoding="async">
+      </picture>
       <p>Handmade in Fort Wayne, Indiana. Fizzy surprises. Handmade soaps. Legendary gifts.</p>
       <form class="optin" data-optin novalidate>
         <label class="label" for="optin-email">Email opt-in</label>
