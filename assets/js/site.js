@@ -437,7 +437,7 @@
     const reply = (text) => {
       add(text.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;'), 'user');
       $('[data-chat-chips]').hidden = true;
-      const t = document.createElement('div'); t.className = 'msg msg-bot'; t.innerHTML = cat + '<div class="typing" aria-label="General Tso is typing"><i></i><i></i><i></i></div>';
+      const t = document.createElement('div'); t.className = 'msg msg-bot'; t.innerHTML = cat + '<div class="typing" aria-label="General Tso’s Meow is typing"><i></i><i></i><i></i></div>';
       log.appendChild(t); log.scrollTop = log.scrollHeight;
       setTimeout(() => {
         t.remove();

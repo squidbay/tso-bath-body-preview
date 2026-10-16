@@ -469,7 +469,7 @@ body.locked{overflow:hidden}
 .typing i{width:7px;height:7px;border-radius:50%;background:var(--tso-gold);animation:pulse 1.2s infinite}
 .typing i:nth-child(2){animation-delay:.2s}.typing i:nth-child(3){animation-delay:.4s}
 @keyframes pulse{0%,100%{opacity:.3}50%{opacity:1}}
-.chat-chips{display:flex;gap:8px;padding:0 16px 12px;overflow-x:auto;scrollbar-width:none}
+.chat-chips{display:flex;flex-wrap:wrap;gap:8px;padding:0 16px 12px}
 .chat-chips .chip{flex:none}
 .chat-form{display:flex;gap:8px;padding:12px 16px;border-top:1px solid var(--tso-border);background:var(--tso-bg)}
 .chat-form .input{flex:1;min-width:0}
@@ -502,12 +502,14 @@ body.locked{overflow:hidden}
 .hb-lantern-b{right:-8%;top:-20%;width:38vw;max-width:560px;aspect-ratio:1;background:radial-gradient(closest-side,rgba(212,180,106,.17),rgba(212,180,106,.05) 55%,rgba(212,180,106,0) 100%)}
 .hb-l{position:absolute;display:block;height:auto;max-width:none;pointer-events:none;user-select:none}
 .hb-sparkles{left:0;top:0;width:100%;height:100%;object-fit:cover;opacity:.75}
-.hb-wave-left{left:-4%;bottom:-6%;width:min(40vw,560px);opacity:.92}
+.hb-wave-left{left:-4%;bottom:4%;width:min(40vw,560px);opacity:.92}
 .hb-branch-l{left:-3%;top:-4%;width:min(30vw,420px)}
 .hb-branch-r{right:-3%;top:-4%;width:min(30vw,420px)}
 @media (max-width:1399px) and (min-width:1000px){.hb-branch-r{width:min(22vw,300px)}.hb-lantern-fu{right:4%}}
 .hb-lantern-fu{right:7%;top:-2%;width:min(9vw,128px)}
-.hb-waves{position:absolute;left:0;right:0;bottom:0;height:min(9vw,120px);background:url(../hero/waves-bottom.png) repeat-x left bottom/auto 100%;opacity:.95}
+.hb-waves{position:absolute;left:0;right:0;bottom:-18px;height:calc(min(9vw,120px) + 18px);background:url(../hero/waves-bottom.png) repeat-x left bottom/auto 100%;opacity:.95;
+  /* the source strip's crests are cut flat at its top edge: fade that edge into the scene */
+  -webkit-mask-image:linear-gradient(180deg,transparent 0,#000 34%);mask-image:linear-gradient(180deg,transparent 0,#000 34%)}
 .hb-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:var(--gutter);align-items:center;padding-block:72px 120px;position:relative}
 .hb-art{position:relative;display:flex;justify-content:center;align-items:center}
 /* gold light + double ring behind the cat (gold, never dark) */
@@ -532,7 +534,7 @@ body.locked{overflow:hidden}
   .hb-wave-left{display:none}
   .hb-lantern-fu{right:4%;top:-1%;width:min(14vw,62px)}
   .hb-branch-l,.hb-branch-r{width:min(38vw,190px);top:-2%}
-  .hb-waves{height:56px}
+  .hb-waves{height:72px}
   .hb-art::before{width:min(64vw,260px)}
   .hb-lantern-a{width:90vw;left:-30%;top:-14%}
   .hb-lantern-b{width:80vw;right:-35%;top:-10%}
@@ -545,7 +547,7 @@ body.locked{overflow:hidden}
   .hb-stage{width:132%}
   .hb-wave-left,.hb-lantern-fu{display:none}
   .hb-branch-l,.hb-branch-r{width:min(22vw,200px)}
-  .hb-waves{height:40px;opacity:.8}
+  .hb-waves{height:54px;opacity:.85}
   .hb-art{padding:10px 18px;margin-left:8px}
   .hb-art::before{width:min(280px,calc(100svh - var(--hdr) - 24px))}
   .hb-copy .eyebrow{margin-bottom:6px}

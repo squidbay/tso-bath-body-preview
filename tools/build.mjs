@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '18';
+const ASSET_V = '21';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -201,7 +201,7 @@ function header({ root, current }) {
     <div class="utils">
       <a class="util only-wide" href="${root}search/"${cur('search')}>${icon('search')}<span>Search</span></a>
       <a class="util only-wide" href="${root}help/"${cur('help')}>${icon('help')}<span>Help</span></a>
-      <button class="util util-tso only-wide" type="button" data-chat-open aria-label="Ask General Tso, our shopping assistant">${cat(root, 28, 'cat cat-util')}<span>TSO</span></button>
+      <button class="util util-tso only-wide" type="button" data-chat-open aria-label="Ask General Tso’s Meow, our shopping assistant">${cat(root, 28, 'cat cat-util')}<span>TSO</span></button>
       <a class="util util-bag" href="${root}bag/"${cur('bag')} aria-label="Bag">${icon('bag')}<span class="hdr-label">Bag</span><span class="bag-chip" data-bag-count hidden>0</span></a>
     </div>
   </div>
@@ -228,7 +228,7 @@ function header({ root, current }) {
   </ul>
   <div class="drawer-foot">
     <a class="btn btn-secondary btn-block" href="${root}search/">${icon('search')} Search</a>
-    <button class="btn btn-secondary btn-block" type="button" data-chat-open>${cat(root, 24, 'cat cat-inline')} Ask General Tso</button>
+    <button class="btn btn-secondary btn-block" type="button" data-chat-open>${cat(root, 24, 'cat cat-inline')} Ask General Tso’s Meow</button>
   </div>
 </nav>`;
 }
@@ -280,14 +280,14 @@ function footer(root) {
 
 function chat(root) {
   return `<div class="chat-launch-wrap" data-chat-wrap>
-  <button class="chat-launch" type="button" data-chat-open aria-label="Ask General Tso, our shopping assistant" aria-controls="chat" aria-expanded="false">
+  <button class="chat-launch" type="button" data-chat-open aria-label="Ask General Tso’s Meow, our shopping assistant" aria-controls="chat" aria-expanded="false">
     ${cat(root, 56, 'cat cat-launch')}<span class="chat-dot" aria-hidden="true"></span><span class="chat-pill" aria-hidden="true">Ask Tso</span>
   </button>
 </div>
 <section class="chat" id="chat" role="dialog" aria-modal="false" aria-labelledby="chat-title" tabindex="-1" hidden>
   <header class="chat-head">
     ${cat(root, 64, 'cat cat-chat-head')}
-    <div><h2 id="chat-title" class="chat-name">General Tso</h2><p class="chat-status">Online · shopping assistant</p></div>
+    <div><h2 id="chat-title" class="chat-name">General Tso’s Meow</h2><p class="chat-status">Online · shopping assistant</p></div>
     <button class="hdr-btn" type="button" data-chat-close aria-label="Close chat">${icon('close')}</button>
   </header>
   <div class="chat-log" data-chat-log aria-live="polite">
@@ -299,11 +299,11 @@ function chat(root) {
     <button class="chip" type="button" data-ask="Is it 100% tallow?">Is it 100% tallow?</button>
   </div>
   <form class="chat-form" data-chat-form>
-    <label class="sr-only" for="chat-input">Message General Tso</label>
-    <input class="input" id="chat-input" type="text" autocomplete="off" placeholder="Ask General Tso…">
+    <label class="sr-only" for="chat-input">Message General Tso’s Meow</label>
+    <input class="input" id="chat-input" type="text" autocomplete="off" placeholder="Ask General Tso’s Meow…">
     <button class="btn btn-primary btn-icon" type="submit" aria-label="Send">${icon('send')}</button>
   </form>
-  <p class="chat-note">Public assistant powered by SquidBay. No order access in P1.</p>
+  <p class="chat-note">Shopping assistant powered by SquidBay. For help with an order, please contact us.</p>
 </section>
 <div class="toast" data-toast role="status" aria-live="polite" hidden></div>`;
 }
@@ -454,7 +454,7 @@ function home() {
       <p class="lead">Handmade in Fort Wayne, Indiana. Fizzy surprises. Handmade soaps. Legendary gifts.</p>
       <div class="btn-row">
         <a class="btn btn-secondary" href="our-story/">Our Story</a>
-        <button class="btn btn-tertiary" type="button" data-chat-open>Ask General Tso ${icon('arrow-right', 'icon icon-sm')}</button>
+        <button class="btn btn-tertiary" type="button" data-chat-open>Ask General Tso’s Meow ${icon('arrow-right', 'icon icon-sm')}</button>
       </div>
     </div>
   </div>
@@ -660,7 +660,7 @@ function ourStory() {
       <h2 id="gt-h">Meet <em>General Tso’s Meow™</em></h2>
       <p>General Tso watches over both collections — a fortune in every Fortune Collection bath bomb, a Mission Dispatch in every Barracks Collection bath bomb.</p>
       <p>He also reports for duty as our shopping assistant.</p>
-      <button class="btn btn-primary" type="button" data-chat-open>Ask General Tso</button>
+      <button class="btn btn-primary" type="button" data-chat-open>Ask General Tso’s Meow</button>
     </div>
   </div>
 </section>
@@ -904,7 +904,7 @@ ${header({ root, current: '' })}
     ${cat(root, 96, 'cat cat-empty')}
     <p class="eyebrow">404</p>
     <h1>This page has gone off duty.</h1>
-    <p class="lead">The page you were looking for isn’t here. Try a collection, or ask General Tso.</p>
+    <p class="lead">The page you were looking for isn’t here. Try a collection, or ask General Tso’s Meow.</p>
     <div class="btn-row center-row">
       <a class="btn btn-primary" href="${root}shop/">Shop all</a>
       <a class="btn btn-secondary" href="${root}">Home</a>
