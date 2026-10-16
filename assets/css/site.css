@@ -479,9 +479,16 @@ body.locked{overflow:hidden}
   .chat-note{padding-bottom:calc(12px + env(safe-area-inset-bottom))}
 }
 @media (orientation:landscape) and (max-height:600px){
-  .chat{top:0;right:0;bottom:0;width:60%;height:auto;border-radius:0;border-width:0 0 0 1px;padding-right:env(safe-area-inset-right)}
-  .chat-note{padding-bottom:calc(8px + env(safe-area-inset-bottom))}
-  .chat-head{padding-block:6px}.cat-chat-head{width:40px;height:40px}
+  /* short landscape phones: Safari's toolbars leave ~320px, so every fixed row is compact and the
+     safe-area inset is padded inside each row (same colour as the row) instead of on the panel */
+  .chat{top:0;right:0;bottom:0;width:60%;height:auto;border-radius:0;border-width:0 0 0 1px}
+  .chat-head,.chat-chips,.chat-form,.chat-note,.chat-log{padding-right:calc(16px + env(safe-area-inset-right))}
+  .chat-head{padding-block:4px;gap:10px}.cat-chat-head{width:34px;height:34px}
+  .chat-name{font-size:18px}.chat-status{font-size:12px}
+  .chat-log{padding-block:8px}
+  .chat-chips{padding-bottom:8px;gap:6px}.chat-chips .chip{min-height:36px;padding:0 12px;font-size:14px}
+  .chat-form{padding-block:8px}.chat-form .input{min-height:44px}.chat-form .btn-icon{width:44px;min-height:44px}
+  .chat-note{font-size:11px;line-height:1.35;padding-top:0;padding-bottom:calc(6px + env(safe-area-inset-bottom))}
 }
 
 /* ---------- owner-approved photos (2026-10-15) ---------- */
