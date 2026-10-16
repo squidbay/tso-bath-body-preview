@@ -90,7 +90,7 @@
       else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
     }
   });
-  matchMedia('(min-width:1180px)').addEventListener('change', (m) => { if (m.matches && drawer && !drawer.hidden) setDrawer(false); });
+  matchMedia('(min-width:1400px)').addEventListener('change', (m) => { if (m.matches && drawer && !drawer.hidden) setDrawer(false); });
   $$('#drawer a').forEach((a) => a.addEventListener('click', () => { if (a.hash && a.pathname === location.pathname) setDrawer(false); }));
 
   // ---------- add to bag ----------
@@ -425,8 +425,8 @@
     const card = (slug, eyebrow, name, stock) => `<div class="msg-card"><p class="eyebrow">${eyebrow}</p><p class="msg-title">${name}</p><p>$—.— · ${stock}</p>${stock === 'Out of stock' ? `<a class="btn btn-secondary btn-block" href="${root}products/${slug}/">View product</a>` : `<button class="btn btn-primary btn-block" type="button" data-add="${slug}">Add to Bag</button>`}</div>`;
     const P = 'products/';
     const answers = [
-      { re: /tallow/i, html: `Yes — the fat base of both our soaps is 100% beef tallow, no other oils. Nine Lives Musk™ and Wonton’ in the Tub™ share that base; only the color and scent change. Full records: <a class="link" href="${root}help/#ingredients">Ingredients &amp; Care →</a>`, cards: [card('nine-lives-musk', 'BARRACKS · TALLOW SOAP', 'Nine Lives Musk™', 'In stock'), card('wonton-in-the-tub', 'FORTUNE · TALLOW SOAP', 'Wonton’ in the Tub™', 'Low stock · 3 left')] },
-      { re: /vegan|animal|ingredient|lard/i, html: `Both of our soaps — Nine Lives Musk™ and Wonton’ in the Tub™ — are made with beef tallow (animal-derived). Same base; they differ only in color and scent. Full records: <a class="link" href="${root}help/#ingredients">Ingredients &amp; Care →</a>` },
+      { re: /tallow/i, html: `Yes — the fat base of both our soaps is 100% beef tallow, no other oils. Nine Lives Musk™ and Wonton’ in the Tub™ share that base; only the color and scent change. <a class="link" href="${root}help/#ingredients">Click to learn more about our process →</a>`, cards: [card('nine-lives-musk', 'BARRACKS · TALLOW SOAP', 'Nine Lives Musk™', 'In stock'), card('wonton-in-the-tub', 'FORTUNE · TALLOW SOAP', 'Wonton’ in the Tub™', 'Low stock · 3 left')] },
+      { re: /vegan|animal|ingredient|lard/i, html: `Both of our soaps — Nine Lives Musk™ and Wonton’ in the Tub™ — are made with beef tallow (animal-derived). Same base; they differ only in color and scent. <a class="link" href="${root}help/#ingredients">Click to learn more about our process →</a>` },
       { re: /order|refund|return|track|late|damag|wrong/i, html: `Handing you to the team. Reply within — business days. <a class="link" href="${root}help/#contact">Contact form</a>`, note: 'Order issues always escalate; I can’t look up orders here.' },
       { re: /ship|deliver|canada|international|ups/i, html: `Tso Bath &amp; Body currently ships within the United States only, via UPS. <a class="link" href="${root}help/#shipping">Shipping &amp; Returns →</a>` },
       { re: /\b(him|his|he|brother|army|veteran|military|dad|father|husband|boys?|men|man|barracks|soldier|navy|marines?)\b/i, html: 'Barracks Collection, then. Two options:', cards: [card('the-exploding-dumpling', 'BARRACKS · BATH BOMB', 'The Exploding Dumpling™', 'Out of stock'), card('nine-lives-musk', 'BARRACKS · TALLOW SOAP', 'Nine Lives Musk™', 'In stock')] },

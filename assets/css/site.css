@@ -46,7 +46,7 @@
 :root{--margin:20px;--gutter:16px;--hdr:56px;--section:48px;--container:1280px}
 @media (min-width:640px){:root{--margin:24px}}
 @media (min-width:1024px){:root{--margin:48px;--gutter:24px;--section:72px}}
-@media (min-width:1180px){:root{--hdr:72px}}
+@media (min-width:1400px){:root{--hdr:72px}}
 @media (min-width:1280px){:root{--margin:64px;--gutter:32px;--section:96px}}
 @media (min-width:1440px){:root{--margin:80px}}
 
@@ -147,14 +147,14 @@ em{font-style:italic;font-weight:500}
 @media (max-width:479px){.util-bag .bag-chip{position:absolute;top:2px;right:0;min-width:18px;height:18px;padding:0 5px;font-size:11px}}
 @media (max-width:479px){.header-row .hdr-label{display:none}.header-row{gap:8px}.wordmark{font-size:19px}.brand-compact{gap:6px}}
 @media (max-width:399px){.wordmark{font-size:17px;letter-spacing:0}.cat-hdr{width:32px;height:32px}}
-@media (min-width:1180px){
+@media (min-width:1400px){
   .only-compact{display:none}
   .brand{flex:none}
   .cat-hdr{width:44px;height:44px}.wordmark{font-size:24px}
   .main-nav{display:block;margin-left:24px}
   .main-nav>ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
   .main-nav li{position:relative;display:flex;align-items:center}
-  .nav-link{display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font-size:var(--tso-nav);font-weight:700;letter-spacing:.08em;color:var(--tso-headline);text-decoration:none;border-bottom:2px solid transparent;transition:color .15s}
+  .nav-link{white-space:nowrap;display:inline-flex;align-items:center;min-height:44px;padding:0 12px;font-size:var(--tso-nav);font-weight:700;letter-spacing:.08em;color:var(--tso-headline);text-decoration:none;border-bottom:2px solid transparent;transition:color .15s}
   .nav-link:hover{color:var(--tso-gold)}
   .nav-link[aria-current="page"]{color:var(--tso-gold);border-bottom-color:var(--tso-gold)}
   .has-menu .nav-link{padding-right:0}
@@ -232,7 +232,7 @@ body.locked{overflow:hidden}
 .stock-in .dot{background:var(--tso-success)}
 .stock-low .dot{background:var(--tso-warning)}
 .stock-out .dot{background:var(--tso-error)}
-.tallow{display:inline-flex;align-items:flex-start;gap:6px;color:var(--tso-body)}
+.tallow{display:inline-flex;align-items:flex-start;gap:6px;color:var(--tso-gold-text);font-style:italic}
 .tallow .icon{margin-top:3px;color:var(--tso-gold)}
 .is-out .slot{opacity:.6}
 .product-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:var(--gutter)}
@@ -293,7 +293,9 @@ body.locked{overflow:hidden}
 .thumb[aria-pressed="true"]{border:2px solid var(--tso-gold);color:var(--tso-headline)}
 .pdp-title{font-size:var(--tso-h1)}
 .pdp-meta{margin:0 0 8px}
-.tallow-row{display:flex;gap:8px;align-items:flex-start;padding:12px 16px;background:var(--tso-bg-2);border-left:2px solid var(--tso-gold);margin:12px 0 16px}
+/* positive quality statement (owner): champagne-gold italic with the P3 farm icon — not a warning box */
+.tallow-row{display:flex;gap:10px;align-items:center;margin:8px 0 16px;font-family:var(--tso-font-display);font-style:italic;font-weight:500;font-size:20px;line-height:1.35;color:var(--tso-gold-text)}
+.tallow-row .icon{flex:none;color:var(--tso-gold);width:20px;height:20px}
 .buy-row{display:flex;flex-wrap:wrap;gap:12px;margin:20px 0 24px}
 .buy-row .btn-grow{min-width:150px}
 .pdp-info>.btn{margin:20px 0 24px}

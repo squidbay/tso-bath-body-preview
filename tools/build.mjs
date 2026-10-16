@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '16';
+const ASSET_V = '17';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -343,7 +343,7 @@ function productCard(root, p, headingLevel = 3) {
     ${eyebrow(`${COLLECTIONS[p.collection].short.toUpperCase()} · ${p.type.toUpperCase()}`, p.collection)}
     <${h} class="card-title"><a href="${productUrl(root, p)}">${p.name}</a></${h}>
     <p class="price">${PRICE} <span class="net">${NET_WT}</span></p>
-    <p class="card-meta">Scent: — · ${stockLine(p)}${p.tallow ? `<br><span class="tallow">${icon('info', 'icon icon-sm')}${p.tallow}</span>` : ''}</p>
+    <p class="card-meta">Scent: — · ${stockLine(p)}${p.tallow ? `<br><span class="tallow">${icon('cow', 'icon icon-sm')}Crafted with 100% locally farm-raised beef tallow.</span>` : ''}</p>
     ${action}
   </div>
 </article>`;
@@ -594,7 +594,7 @@ function productPage(p) {
         ${eyebrow(typeLabel(p), p.collection)}
         <h1 class="pdp-title">${p.name}</h1>
         <p class="price price-lg">${PRICE} <span class="net">· ${NET_WT}</span></p>
-        ${p.tallow ? `<p class="tallow tallow-row">${icon('info', 'icon')}${p.tallow}.</p>` : ''}
+        ${p.tallow ? `<p class="tallow-row">${icon('cow', 'icon')}Crafted with 100% locally farm-raised beef tallow.</p>` : ''}
         <p class="lead">${p.lead}</p>
         <p class="pdp-meta">Scent: —</p>
         <p class="pdp-meta">${stockLine(p)}${p.stock === 'out' ? '' : ' — from verified inventory'}</p>
