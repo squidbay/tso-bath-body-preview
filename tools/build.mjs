@@ -11,7 +11,7 @@ const OUT = join(TOOLS, '..');
 // GitHub Pages serves 404.html at any depth, so it uses the absolute project path.
 const PAGES_BASE = '/tso-bath-body-preview/';
 const PREVIEW_URL = 'https://squidbay.github.io/tso-bath-body-preview/';
-const ASSET_V = '17';
+const ASSET_V = '18';
 
 const OG = {
   title: 'Tso Bath & Body — Soak Well. Live Boldly.',
@@ -962,19 +962,24 @@ console.log(`wrote ${Object.keys(files).length} files`);
 
 function heroPhoto(root) {
   // Moodboard composition (owner, 2026-10-15): the approved compact-cat PNG on a dressed P3 ground
-  // (lantern glow, gold rings, blossoms, waves — CSS + P3 ornaments only; no second wordmark in the hero) — no
+  // (owner-supplied transparent art layers 2026-10-15 in assets/hero/: waves, 福 lantern, blossom branches,
+  //  sparkles, gold stage ring — none contains a cat, logo or wordmark; no second wordmark in the hero) — no
   // generated photo, so nothing needs masking. Desktop: cat left, branding + shopping right. Phones:
   // compact cat-led stack (portrait) or side by side (landscape). Artwork is never cropped or filtered.
   const b = `${root}assets/brand/`;
   return `<section class="hero hero-brand" data-focus="HERO">
   <div class="hb-deco" aria-hidden="true">
     <span class="hb-lantern hb-lantern-a"></span><span class="hb-lantern hb-lantern-b"></span>
-    <span class="hb-bloom hb-bloom-1"></span><span class="hb-bloom hb-bloom-2"></span><span class="hb-bloom hb-bloom-3"></span><span class="hb-bloom hb-bloom-4"></span><span class="hb-bloom hb-bloom-5"></span>
+    <img class="hb-l hb-sparkles" src="${root}assets/hero/sparkles.png" alt="" decoding="async">
+    <img class="hb-l hb-wave-left" src="${root}assets/hero/waves-left.png" alt="" decoding="async">
+    <img class="hb-l hb-branch-l" src="${root}assets/hero/blossom-branch-left.png" alt="" decoding="async">
+    <img class="hb-l hb-branch-r" src="${root}assets/hero/blossom-branch-right.png" alt="" decoding="async">
+    <img class="hb-l hb-lantern-fu" src="${root}assets/hero/lantern-fu.png" alt="" decoding="async">
     <span class="hb-waves"></span>
   </div>
   <div class="wrap hb-grid">
     <div class="hb-art">
-      <span class="hb-ring" aria-hidden="true"></span>
+      <img class="hb-stage" src="${root}assets/hero/stage-glow.png" alt="" aria-hidden="true" decoding="async">
       <img class="hb-cat" src="${b}general-tso-compact-cat.png" srcset="${b}general-tso-compact-cat-256w.webp 256w, ${b}general-tso-compact-cat-512w.webp 512w, ${b}general-tso-compact-cat.png 1254w" sizes="(min-width: 1024px) 440px, (orientation: landscape) 34vh, 180px" alt="General Tso, the Tso Bath &amp; Body cat" width="1254" height="1254" fetchpriority="high">
     </div>
     <div class="hb-copy">

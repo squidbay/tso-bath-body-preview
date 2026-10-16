@@ -63,3 +63,7 @@ Still outstanding: product angles B–E, SRC-01…03, SOAP-01, STORY-01.
 
 - **Home hero** no longer uses HERO-D-01 / HERO-P-01 / HERO-L-01. It shows the approved `general-tso-compact-cat.png` (and its WebP derivatives) plus the approved horizontal lockup on desktop, unaltered, on a CSS ground. The three hero photos stay in `assets/photos/` and in `image-review/` as the approval record.
 - **GIFT-03 — The Double Happiness Chest** (24 pieces: the Fortune and Barracks 12-piece sets in one outer chest). Target 1600×1200 (4:3), sRGB JPEG q85. **Photograph pending.** Until it exists, the chest feature shows the approved GIFT-02 gift-presentation image (owner correction 2026-10-15), unaltered and uncropped, with a small caption saying it is a concept of the proposed presentation. The separate Gift Presentation promo block was removed; GIFT-02 appears once on the page. Chest dimensions, inserts, weight and price are not final.
+
+### Hero art layers (owner-supplied, 2026-10-15)
+
+`assets/hero/` — from `Tso_Bath_Body_Hero_Artwork_Layers.zip`: waves-left, waves-bottom (tiles horizontally), lantern-fu (福), blossom-branch-left/right (right is a mirror of left), sparkles, stage-glow. Transparent PNGs, downsized with `sips` for the web; no cat, logo or wordmark in any layer. They sit behind the approved compact cat and the copy (z-index −1); verified at 8 viewports that no layer overlaps any line of text.
